@@ -36,11 +36,11 @@
                 "reporters": [{
                     "reporter": "good-file",
                     "events": { "log": "*" },
-                    "config": "/path/to/log.log"
+                    "config": "/var/log/passpair/log.log"
                 }, {
                     "reporter": "good-file",
                     "events": { "ops": "*" },
-                    "config": "/path/to/ops.log"
+                    "config": "/var/log/passpair/ops.log"
                 }]
             }
         }

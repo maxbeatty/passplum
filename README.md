@@ -37,7 +37,7 @@ NODE_ENV=dev npm start
 
 ### Seeding Data
 
-You can use any set of words you like. Put one word per line in a text file. See [`example-seed-data.csv`] as an example. Running the initial database migration with the `SEED_FILE` environment variable will populate your database.
+You can use any set of words you like. Put one word per line in a text file. See [`example-seed-data.csv`](https://github.com/maxbeatty/passpair/blob/master/example-seed-data.csv) as an example. Running the initial database migration with the `SEED_FILE` environment variable will populate your database.
 
 ```
 SEED_FILE=example-seed-data.csv node seed.js
@@ -47,10 +47,10 @@ SEED_FILE=example-seed-data.csv node seed.js
 
 ### start
 
-Start server
+Start server specifying an environment. The environment dictates which plugins are enabled in [`confidence.json`](https://github.com/maxbeatty/passpair/blob/master/confidence.json)
 
 ```
-npm start
+NODE_ENV=dev npm start
 ```
 
 ### test
