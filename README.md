@@ -9,8 +9,6 @@ You'll need [Node.js](https://nodejs.org/en/) and [a sequelize compatible databa
 Populate these environment variables or declare them in a `.env` file in the root of the project. _Development defaults provided._
 
 ```
-PORT=8000
-
 DB_TYPE=postgres
 DB_HOST=localhost
 DB_USER=max
@@ -34,6 +32,8 @@ Start the server:
 ```
 NODE_ENV=dev npm start
 ```
+
+You should now be able to open [http://localhost:8000](http://localhost:8000) to get a great password.
 
 ### Seeding Data
 
