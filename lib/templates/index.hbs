@@ -1,0 +1,47 @@
+<p class="center lead">Here is a great password</p>
+
+<h1 class="center code">
+  <code>{{passphrase}}</code>
+</h1>
+
+<article class="article">
+  <section>
+    <h2 class="center">What?</h2>
+
+    <p>
+      <a href="https://en.wikipedia.org/wiki/Passphrase">Passphrases</a> can be easier for people to remember and harder for computers to guess.
+      A new, unique passphrase made up of simple, easy-to-type words is generated every time this page is refreshed.
+    </p>
+
+    <p>
+      They are not stored.
+      You are safe to take as many as you please.
+      There are just shy of 665 billion combinations to give out.
+    </p>
+  </section>
+
+  <section>
+    <h2 class="center">How?</h2>
+
+    <p>There’s no secret potion here.</p>
+
+    <ol>
+      <li>a random set of words is selected from a collection (like a dictionary) to make a passphrase
+      <li>that passphrase is analyzed by <a href="https://blogs.dropbox.com/tech/2012/04/zxcvbn-realistic-password-strength-estimation/">Dropbox’s open source password strength estimator</a>
+      <li>
+        <ol>
+          <li>If it scores high enough, a <a href="https://en.wikipedia.org/wiki/PBKDF2">cryptographic key</a> is created and stored so the same combination won’t be shown again
+          <li>If the score isn’t high enough or it has already been seen, another passphrase is generated
+        </ol>
+    </ol>
+
+    <p>That’s it.</p>
+
+
+    <p>
+      This site is <a href="">open source</a>.
+      You can easily use your own collection of words to make the passphrases even more special (and even more secure).
+      Please submit your improvements, questions, and ideas <a href="#">on GitHub</a> or <a href="https://twitter.com/maxbeatty">on Twitter</a>.
+    </p>
+  </section>
+</article>

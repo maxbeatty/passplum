@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+- 4.0.0
+notifications:
+  email: false
+addons:
+  code_climate:
+    repo_token: d6cf18c92bd059041f3aa48d287e358802bbe10e239e126cda9a8b1de2100053
+after_script:
+- npm install -g codeclimate-test-reporter
+- cat lcov.info | codeclimate

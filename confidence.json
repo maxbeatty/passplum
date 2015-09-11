@@ -1,0 +1,48 @@
+{
+    "connections": [
+        {
+            "port": 8000
+        }
+    ],
+    "plugins": {
+        "$filter": env,
+        "$base": {
+            "vision": {},
+            "visionary": {
+                "engines": { "hbs": "handlebars" },
+                "path": "./lib/templates",
+                "layout": true
+            },
+            "inert": {},
+            "./lib/routes": {},
+            "good": {
+                "opsInterval": 5000,
+            },
+        },
+        "dev": {
+            "blipp": {},
+            "good": {
+                "reporters": [{
+                    "reporter": "good-console",
+                    "events": { "ops": "*", "log": "*", "response": "*", "request": "*" }
+                }]
+            },
+            "visionary": {
+              "isCached": false
+            }
+        },
+        "prod": {
+            "good": {
+                "reporters": [{
+                    "reporter": "good-file",
+                    "events": { "log": "*" },
+                    "config": "/path/to/log.log"
+                }, {
+                    "reporter": "good-file",
+                    "events": { "ops": "*" },
+                    "config": "/path/to/ops.log"
+                }]
+            }
+        }
+    },
+}

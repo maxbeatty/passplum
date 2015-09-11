@@ -1,0 +1,42 @@
+{
+  "name": "passpair",
+  "version": "1.0.0",
+  "description": "Easier, Better Passwords",
+  "scripts": {
+    "start": "confidence -c confidence.json --filter.env=$NODE_ENV > config.json && rejoice -c config.json -p `pwd`",
+    "test": "lab -c -L -r console -o stdout -r lcov -o lcov.info"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/maxbeatty/passpair.git"
+  },
+  "author": "Max Beatty",
+  "license": "MIT",
+  "dependencies": {
+    "confidence": "^1.2.0",
+    "debug": "^2.2.0",
+    "dotenv": "^1.2.0",
+    "good": "^6.3.0",
+    "handlebars": "^4.0.2",
+    "hapi": "^9.0.3",
+    "pg": "^4.4.1",
+    "pg-hstore": "^2.3.2",
+    "rejoice": "^2.0.1",
+    "sequelize": "^3.6.0",
+    "vision": "^3.0.0",
+    "visionary": "^3.0.1",
+    "zxcvbn": "^3.2.2"
+  },
+  "devDependencies": {
+    "blipp": "^2.3.0",
+    "code": "^1.5.0",
+    "eslint": "^1.3.1",
+    "eslint-config-hapi": "^1.0.1",
+    "eslint-plugin-hapi": "^1.2.0",
+    "good-console": "^5.0.3",
+    "lab": "^5.15.2",
+    "proxyquire": "^1.7.1",
+    "sinon": "^1.16.1"
+  },
+  "private": true
+}
