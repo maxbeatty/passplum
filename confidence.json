@@ -13,7 +13,6 @@
                 "path": "./lib/templates",
                 "layout": true
             },
-            "inert": {},
             "./lib/routes": {},
             "good": {
                 "opsInterval": 5000,
