@@ -23,7 +23,7 @@
             "good": {
                 "reporters": [{
                     "reporter": "good-console",
-                    "events": { "ops": "*", "log": "*", "response": "*", "request": "*" }
+                    "events": { "ops": "*", "log": "*", "response": "*", "request": "*", "error": "*" }
                 }]
             },
             "visionary": {
@@ -34,7 +34,7 @@
             "good": {
                 "reporters": [{
                     "reporter": "good-file",
-                    "events": { "log": "*" },
+                    "events": { "log": "*", "response": "*", "request": "*", "error": "*" },
                     "config": "/var/log/passpair/log.log"
                 }, {
                     "reporter": "good-file",
