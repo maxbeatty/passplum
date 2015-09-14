@@ -9,7 +9,7 @@
     <h2 class="center">What?</h2>
 
     <p>
-      <a href="https://en.wikipedia.org/wiki/Passphrase">Passphrases</a> can be easier for people to remember and harder for computers to guess.
+      <a href="https://en.wikipedia.org/wiki/Passphrase">Passphrases</a> are easier for people to remember and harder for computers to guess.
       A new, unique passphrase made up of simple, easy-to-type words is generated every time this page is refreshed.
     </p>
 
@@ -21,26 +21,35 @@
   </section>
 
   <section>
+    <h2 class="center">Why?</h2>
+
+    <p>
+      Strong passwords are <em>still</em> too hard to create, remember, and enter.
+      Many systems <em>still</em> suggest lengthy mixed case letters, numbers, and symbols even though those types of passwords are easier to crack.
+      This quick, approachable tool takes the work out of devising passwords.
+      Using the friendly passphrase above, you will be more secure.
+    </p>
+
+  </section>
+
+  <section>
     <h2 class="center">How?</h2>
 
-    <p>There’s no secret potion here.</p>
+    <p>Here is the process for creating these passphrases:</p>
 
     <ol>
-      <li>a random set of words is selected from a collection (like a dictionary) to make a passphrase
-      <li>that passphrase is analyzed by <a href="https://blogs.dropbox.com/tech/2012/04/zxcvbn-realistic-password-strength-estimation/">Dropbox’s open source password strength estimator</a>
+      <li>select a random set of words from a collection (like a dictionary) to form a passphrase
+      <li>analyze that passphrase with <a href="https://github.com/dropbox/zxcvbn">Dropbox’s open source password strength estimator</a>
       <li>
         <ol>
-          <li>If it scores high enough, a <a href="https://en.wikipedia.org/wiki/PBKDF2">cryptographic key</a> is created and stored so the same combination won’t be shown again
-          <li>If the score isn’t high enough or it has already been seen, another passphrase is generated
+          <li>If it scores high enough, generate and store a <a href="https://en.wikipedia.org/wiki/PBKDF2">cryptographic key</a> so the same combination won’t be shown again
+          <li>If the score isn’t high enough or it has already been seen, construct another passphrase
         </ol>
     </ol>
 
-    <p>That’s it.</p>
-
-
     <p>
       This site is <a href="https://github.com/maxbeatty/passpair">open source</a>.
-      You can easily use your own collection of words to make the passphrases even more special (and even more secure).
+      It is designed so you can easily use your own collection of words to make the passphrases even more special (and even more secure).
       Please submit your improvements, questions, and ideas <a href="https://github.com/maxbeatty/passpair/issues">on GitHub</a> or <a href="https://twitter.com/maxbeatty">on Twitter</a>.
     </p>
   </section>

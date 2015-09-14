@@ -7,33 +7,51 @@
     <title>Pass Pair</title>
 
     <style media="screen">
+      html {
+        font-size: 16px;
+        line-height: 1.5;
+      }
+
       body {
         margin: 0;
-        font-size: 1.3em;
-        line-height: 1.4em;
+        font-size: 2.5rem;
       }
 
       .center { text-align: center }
 
-      .lead, code {
+      .lead,
+      .code {
         font-family: monospace;
-        font-size: 1.4em;
+      }
+
+      .lead {
+        font-size: 3rem;
       }
 
       .code {
-        padding: 1.5em;
+        margin: 0;
+        font-size: 6rem;
+        line-height: 1.1;
+        padding: 2rem;
         letter-spacing: .15em;
         color: #fff;
         background-color: #000;
       }
 
       .article {
-        max-width: 31em;
         margin: 0 auto;
         padding: 1em 2em;
       }
 
+      @media (min-width: 34em) {
+        .article {
+          max-width: 34em;
+          font-size: 1.5rem;
+        }
+      }
+
       h2 {
+        font-size: 3.6rem;
         font-family: sans-serif;
       }
 
