@@ -1,4 +1,4 @@
-# passpair [![Build Status](https://travis-ci.org/maxbeatty/passpair.svg)](https://travis-ci.org/maxbeatty/passpair) [![Code Climate](https://codeclimate.com/github/maxbeatty/passpair/badges/gpa.svg)](https://codeclimate.com/github/maxbeatty/passpair) [![Test Coverage](https://codeclimate.com/github/maxbeatty/passpair/badges/coverage.svg)](https://codeclimate.com/github/maxbeatty/passpair)
+# passplum [![Build Status](https://travis-ci.org/maxbeatty/passplum.svg)](https://travis-ci.org/maxbeatty/passplum) [![Code Climate](https://codeclimate.com/github/maxbeatty/passplum/badges/gpa.svg)](https://codeclimate.com/github/maxbeatty/passplum) [![Test Coverage](https://codeclimate.com/github/maxbeatty/passplum/badges/coverage.svg)](https://codeclimate.com/github/maxbeatty/passplum)
 
 > Easier, Better Passwords
 
@@ -13,9 +13,9 @@ DB_TYPE=postgres
 DB_HOST=localhost
 DB_USER=max
 DB_PASS=''
-DB_NAME=passpair
+DB_NAME=passplum
 
-CRYPTO_SALT=passpair
+CRYPTO_SALT=passplum
 CRYPTO_ITERATIONS=4096
 CRYPTO_KEY_LEN=512
 CRYPTO_DIGEST=sha256
@@ -37,7 +37,7 @@ You should now be able to open [http://localhost:8000](http://localhost:8000) to
 
 ### Seeding Data
 
-You can use any set of words you like. Put one word per line in a text file. See [`example-seed-data.csv`](https://github.com/maxbeatty/passpair/blob/master/example-seed-data.csv) as an example. Running the initial database migration with the `SEED_FILE` environment variable will populate your database.
+You can use any set of words you like. Put one word per line in a text file. See [`example-seed-data.csv`](https://github.com/maxbeatty/passplum/blob/master/example-seed-data.csv) as an example. Running the initial database migration with the `SEED_FILE` environment variable will populate your database.
 
 ```
 SEED_FILE=example-seed-data.csv node seed.js
@@ -47,7 +47,7 @@ SEED_FILE=example-seed-data.csv node seed.js
 
 ### start
 
-Start server specifying an environment. The environment dictates which plugins are enabled in [`confidence.json`](https://github.com/maxbeatty/passpair/blob/master/confidence.json)
+Start server specifying an environment. The environment dictates which plugins are enabled in [`confidence.json`](https://github.com/maxbeatty/passplum/blob/master/confidence.json)
 
 ```
 NODE_ENV=dev npm start

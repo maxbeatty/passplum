@@ -1,5 +1,5 @@
 {
-  "name": "passpair",
+  "name": "passplum",
   "version": "1.0.0",
   "description": "Easier, Better Passwords",
   "scripts": {
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/maxbeatty/passpair.git"
+    "url": "git://github.com/maxbeatty/passplum.git"
   },
   "author": "Max Beatty",
   "license": "MIT",

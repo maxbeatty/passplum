@@ -35,11 +35,11 @@
                 "reporters": [{
                     "reporter": "good-file",
                     "events": { "log": "*", "response": "*", "request": "*", "error": "*" },
-                    "config": "/var/log/passpair/log.log"
+                    "config": "/var/log/passplum/log.log"
                 }, {
                     "reporter": "good-file",
                     "events": { "ops": "*" },
-                    "config": "/var/log/passpair/ops.log"
+                    "config": "/var/log/passplum/ops.log"
                 }]
             }
         }
