@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Easier, Better Passwords">
 
     <title>Pass Pair</title>
@@ -14,45 +15,35 @@
 
       body {
         margin: 0;
-        font-size: 2.5rem;
       }
 
-      .center { text-align: center }
-
-      .lead,
-      .code {
-        font-family: monospace;
+      h1,
+      h2,
+      code {
+        text-align: center
       }
 
-      .lead {
-        font-size: 3rem;
-      }
-
-      .code {
-        margin: 0;
-        font-size: 6rem;
-        line-height: 1.1;
-        padding: 2rem;
-        letter-spacing: .15em;
-        color: #fff;
-        background-color: #000;
-      }
-
-      .article {
-        margin: 0 auto;
-        padding: 1em 2em;
-      }
-
-      @media (min-width: 34em) {
-        .article {
-          max-width: 34em;
-          font-size: 1.5rem;
-        }
-      }
-
+      h1,
       h2 {
-        font-size: 3.6rem;
         font-family: sans-serif;
+      }
+
+      code {
+        display: block;
+        margin: 0;
+        white-space: nowrap;
+        word-wrap: normal;
+        word-break: keep-all;
+        letter-spacing: .15em;
+        outline: 0;
+        background-color: whitesmoke;
+        font-size: 1.2em;
+      }
+
+      article {
+        margin: 0 auto;
+        padding: 0 0.5em;
+        font-size: 1.25em;
       }
 
       ol ol {

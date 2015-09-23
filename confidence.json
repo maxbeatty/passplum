@@ -5,7 +5,7 @@
         }
     ],
     "plugins": {
-        "$filter": env,
+        "$filter": "env",
         "$base": {
             "vision": {},
             "visionary": {
@@ -15,8 +15,8 @@
             },
             "./lib/routes": {},
             "good": {
-                "opsInterval": 5000,
-            },
+                "opsInterval": 5000
+            }
         },
         "dev": {
             "blipp": {},
@@ -43,5 +43,5 @@
                 }]
             }
         }
-    },
+    }
 }

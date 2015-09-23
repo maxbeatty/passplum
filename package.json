@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Easier, Better Passwords",
   "scripts": {
-    "start": "confidence -c confidence.json --filter.env=$NODE_ENV > config.json && rejoice -c config.json -p `pwd`",
+    "config": "confidence -c confidence.json --filter.env=$NODE_ENV > config.json",
+    "serve": "rejoice -c config.json -p `pwd`",
+    "start": "npm run config && npm run serve",
     "test": "lab -c -L -r console -o stdout -r lcov -o lcov.info"
   },
   "repository": {
