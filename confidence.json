@@ -29,10 +29,18 @@
                 }]
             },
             "visionary": {
-              "isCached": false
+                "isCached": false,
+                "context": {
+                    "measure": false
+                }
             }
         },
         "prod": {
+            "visionary": {
+                "context": {
+                    "measure": true
+                }
+            },
             "good": {
                 "reporters": [{
                     "reporter": "good-file",
