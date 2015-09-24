@@ -1,7 +1,7 @@
 {
     "connections": [
         {
-            "port": 8000
+            "port": "$env.PORT"
         }
     ],
     "plugins": {

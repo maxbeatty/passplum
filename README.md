@@ -30,7 +30,7 @@ npm install
 Start the server:
 
 ```
-NODE_ENV=dev npm start
+NODE_ENV=dev PORT=8000 npm start
 ```
 
 You should now be able to open [http://localhost:8000](http://localhost:8000) to get a great password.
