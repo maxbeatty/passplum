@@ -7,27 +7,25 @@
     "plugins": {
         "$filter": "env",
         "$base": {
-            "inert": {},
             "vision": {},
             "visionary": {
                 "engines": { "hbs": "handlebars" },
                 "path": "./lib/templates",
                 "layout": true
             },
-            "./lib/icons": {},
             "./lib/routes": {},
             "good": {
-                "opsInterval": 5000
+                "opsInterval": 5000,
+                "reporters": [{
+                    "reporter": "good-console",
+                    "events": { "log": "*", "response": "*", "request": "*", "error": "*" }
+                }]
             }
         },
         "dev": {
             "blipp": {},
-            "good": {
-                "reporters": [{
-                    "reporter": "good-console",
-                    "events": { "ops": "*", "log": "*", "response": "*", "request": "*", "error": "*" }
-                }]
-            },
+            "inert": {},
+            "./lib/icons": {},
             "visionary": {
                 "isCached": false,
                 "context": {
@@ -40,17 +38,6 @@
                 "context": {
                     "measure": true
                 }
-            },
-            "good": {
-                "reporters": [{
-                    "reporter": "good-file",
-                    "events": { "log": "*", "response": "*", "request": "*", "error": "*" },
-                    "config": "/var/log/passplum/log.log"
-                }, {
-                    "reporter": "good-file",
-                    "events": { "ops": "*" },
-                    "config": "/var/log/passplum/ops.log"
-                }]
             }
         }
     }
