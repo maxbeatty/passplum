@@ -7,12 +7,14 @@
     "plugins": {
         "$filter": "env",
         "$base": {
+            "inert": {},
             "vision": {},
             "visionary": {
                 "engines": { "hbs": "handlebars" },
                 "path": "./lib/templates",
                 "layout": true
             },
+            "./lib/icons": {},
             "./lib/routes": {},
             "good": {
                 "opsInterval": 5000
