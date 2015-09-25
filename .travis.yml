@@ -9,3 +9,16 @@ addons:
 after_script:
 - npm install -g codeclimate-test-reporter
 - cat lcov.info | codeclimate-test-reporter
+env:
+- ELASTIC_BEANSTALK_LABEL=$TRAVIS_COMMIT
+deploy:
+    provider: elasticbeanstalk
+    region: us-east-1
+    app: passplum
+    env: passplum-prod
+    bucket-name: $ELASTIC_BEANSTALK_BUCKET
+    access_key_id: $AWS_ACCESS_KEY_ID
+    secret_access_key: $AWS_SECRET_ACCESS_KEY
+    on:
+        repo: maxbeatty/passplum
+        branch: master
