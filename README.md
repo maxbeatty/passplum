@@ -4,7 +4,7 @@
 
 ## Getting Started
 
-You'll need [Node.js](https://nodejs.org/en/) and [a sequelize compatible database](http://sequelize.readthedocs.org/en/latest/docs/getting-started/#installation) like postgres.
+You'll need [Node.js](https://nodejs.org/en/), [a sequelize compatible database](http://sequelize.readthedocs.org/en/latest/docs/getting-started/#installation) like [postgres](www.postgresql.org), and [redis](http://redis.io/) for rate-limiting.
 
 Populate these environment variables or declare them in a `.env` file in the root of the project. _Development defaults provided._
 
@@ -19,6 +19,9 @@ CRYPTO_SALT=passplum
 CRYPTO_ITERATIONS=4096
 CRYPTO_KEY_LEN=512
 CRYPTO_DIGEST=sha256
+
+REDIS_HOST=localhost
+REDIS_PORT=6379
 ```
 
 Install dependencies:

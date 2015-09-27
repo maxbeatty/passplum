@@ -13,6 +13,15 @@
                 "path": "./lib/templates",
                 "layout": true
             },
+            "./lib/ratelimit": {
+                "redis": {
+                    "port": "$env.REDIS_PORT",
+                    "host": "$env.REDIS_HOST"
+                },
+                "namespace": "passplum",
+                "max": 500,
+                "duration": 3600000
+            },
             "./lib/routes": {},
             "good": {
                 "opsInterval": 5000,
