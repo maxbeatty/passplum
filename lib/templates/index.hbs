@@ -1,10 +1,10 @@
-<h1>Here is a great password</h1>
+<h1 class="u-center">Here is a great password</h1>
 
-<code contenteditable="true">{{passphrase}}</code>
+<code id="passphrase" class="u-center" contenteditable="true">{{passphrase}}</code>
 
 <article>
   <section>
-    <h2>What?</h2>
+    <h2 class="u-center">What?</h2>
 
     <p>
       <a href="https://en.wikipedia.org/wiki/Passphrase">Passphrases</a> are easier for people to remember and harder for computers to guess.
@@ -19,7 +19,7 @@
   </section>
 
   <section>
-    <h2>Why?</h2>
+    <h2 class="u-center">Why?</h2>
 
     <p>
       Strong passwords are <em>still</em> too hard to create, remember, and enter.
@@ -31,7 +31,7 @@
   </section>
 
   <section>
-    <h2>How?</h2>
+    <h2 class="u-center">How?</h2>
 
     <p>Here is the process for creating these passphrases:</p>
 
@@ -52,19 +52,3 @@
     </p>
   </section>
 </article>
-
-<script type="text/javascript">
-  var el = document.getElementsByTagName('code')[0];
-
-  function select() {
-    var selection = window.getSelection();
-    var range = document.createRange();
-
-    range.selectNodeContents(el);
-
-    selection.removeAllRanges();
-    selection.addRange(range);
-  }
-
-  el.addEventListener('click', select);
-</script>

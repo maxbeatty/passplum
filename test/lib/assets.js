@@ -2,7 +2,7 @@ const Lab = require('lab');
 const Code = require('code');
 const Hapi = require('hapi');
 
-const Icons = require('../../lib/icons');
+const Icons = require('../../lib/assets');
 
 const lab = exports.lab = Lab.script();
 const expect = Code.expect;

@@ -34,7 +34,7 @@
         "dev": {
             "blipp": {},
             "inert": {},
-            "./lib/icons": {},
+            "./lib/assets": {},
             "visionary": {
                 "isCached": false,
                 "context": {

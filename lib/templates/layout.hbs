@@ -12,79 +12,7 @@
     <link rel="apple-touch-icon" sizes="152x152" href="touch-icon-ipad-retina.png">
     <link rel="apple-touch-icon" sizes="180x180" href="touch-icon-iphone-retina-hd.png">
 
-    <style media="screen">
-      html {
-        font-size: 16px;
-        line-height: 1.5;
-      }
-
-      body {
-        margin: 0;
-      }
-
-      h1,
-      h2,
-      code {
-        text-align: center
-      }
-
-      h1,
-      h2 {
-        font-family: sans-serif;
-      }
-
-      code {
-        display: block;
-        margin: 0;
-        white-space: nowrap;
-        word-wrap: normal;
-        word-break: keep-all;
-        letter-spacing: .15em;
-        outline: 0;
-        background-color: plum;
-        color: #360036;
-        font-size: 1.2em;
-      }
-
-      ::selection {
-        background-color: #b5dda0;
-      }
-
-      ,
-      ::-moz-selection {
-        background-color: #b5dda0;
-      }
-
-      article {
-        margin: 0 auto;
-        padding: 0 0.5em;
-        font-size: 1.25em;
-      }
-
-      @media (min-width: 34em) {
-        article {
-          max-width: 34em;
-        }
-      }
-
-      a,
-      a:link {
-          color: #360036;
-      }
-
-      a:visited {
-          color: plum;
-      }
-
-      a:active {
-          color: #b5dda0;
-          text-decoration: none;
-      }
-
-      ol ol {
-        list-style-type: lower-alpha;
-      }
-    </style>
+    <link rel="stylesheet" href="/main.css">
 
     {{#if measure}}
         <script>
@@ -103,5 +31,8 @@
 
     {{{content}}}
 
+    <script src="/main.js">
+
+    </script>
   </body>
 </html>
