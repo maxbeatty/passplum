@@ -42,6 +42,7 @@
     "eslint-config-hapi": "^1.0.1",
     "eslint-plugin-hapi": "^1.2.0",
     "lab": "^5.15.2",
+    "npm-shrinkwrap": "200.5.1",
     "proxyquire": "^1.7.1",
     "sinon": "^1.16.1"
   },

@@ -1,6 +1,5 @@
 language: node_js
 node_js:
-- '0.12'
 - 4
 notifications:
   email: false
@@ -23,4 +22,4 @@ deploy:
     on:
         repo: maxbeatty/passplum
         branch: master
-        node: '0.12'
+        node: 4
