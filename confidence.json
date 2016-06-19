@@ -19,6 +19,7 @@
                 "max": 500,
                 "duration": 3600000
             },
+            "inert": {},
             "./lib/assets": {},
             "./lib/routes": {},
             "good": {
@@ -31,7 +32,6 @@
         },
         "dev": {
             "blipp": {},
-            "inert": {},
             "visionary": {
                 "isCached": false,
                 "context": {

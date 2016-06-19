@@ -9,6 +9,8 @@ You'll need [Node.js](https://nodejs.org/en/), [a sequelize compatible database]
 Populate these environment variables or declare them in a `.env` file in the root of the project. _Development defaults provided._
 
 ```
+PORT=3000
+
 DATABASE_URL=postgres://user:pass@host:5432/dbname
 
 CRYPTO_SALT=passplum
@@ -28,7 +30,7 @@ npm install
 Start the server:
 
 ```
-NODE_ENV=dev PORT=8000 npm start
+NODE_ENV=dev npm start
 ```
 
 You should now be able to open [http://localhost:8000](http://localhost:8000) to get a great password.
@@ -48,7 +50,7 @@ SEED_FILE=example-seed-data.csv node seed.js
 Start server specifying an environment. The environment dictates which plugins are enabled in [`confidence.json`](https://github.com/maxbeatty/passplum/blob/master/confidence.json)
 
 ```
-NODE_ENV=dev npm start
+NODE_ENV=prod npm start
 ```
 
 ### test
