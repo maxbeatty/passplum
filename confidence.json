@@ -19,6 +19,7 @@
                 "max": 500,
                 "duration": 3600000
             },
+            "./lib/assets": {},
             "./lib/routes": {},
             "good": {
                 "opsInterval": 5000,
@@ -31,7 +32,6 @@
         "dev": {
             "blipp": {},
             "inert": {},
-            "./lib/assets": {},
             "visionary": {
                 "isCached": false,
                 "context": {
