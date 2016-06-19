@@ -14,10 +14,7 @@
                 "layout": true
             },
             "./lib/ratelimit": {
-                "redis": {
-                    "port": "$env.REDIS_PORT",
-                    "host": "$env.REDIS_HOST"
-                },
+                "redisUrl": "$env.REDIS_URL",
                 "namespace": "passplum",
                 "max": 500,
                 "duration": 3600000

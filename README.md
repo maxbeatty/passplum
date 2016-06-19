@@ -9,19 +9,14 @@ You'll need [Node.js](https://nodejs.org/en/), [a sequelize compatible database]
 Populate these environment variables or declare them in a `.env` file in the root of the project. _Development defaults provided._
 
 ```
-DB_TYPE=postgres
-DB_HOST=localhost
-DB_USER=max
-DB_PASS=''
-DB_NAME=passplum
+DATABASE_URL=postgres://user:pass@host:5432/dbname
 
 CRYPTO_SALT=passplum
 CRYPTO_ITERATIONS=4096
 CRYPTO_KEY_LEN=512
 CRYPTO_DIGEST=sha256
 
-REDIS_HOST=localhost
-REDIS_PORT=6379
+REDIS_URL=redis://user:pass@host:12345
 ```
 
 Install dependencies:

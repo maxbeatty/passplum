@@ -73,10 +73,7 @@ lab.experiment('RateLimit', function () {
         server.register({
             register: RateLimit,
             options: {
-                redis: {
-                    port: 6379,
-                    host: '0.0.0.0'
-                },
+                redisUrl: 'redis://localhost',
                 namespace: 'testing',
                 max: 2,
                 duration: 2000
