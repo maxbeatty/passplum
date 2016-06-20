@@ -4,7 +4,7 @@
   "description": "Easier, Better Passwords",
   "scripts": {
     "config": "node -r dotenv/config ./node_modules/.bin/confidence -c confidence.json --filter.env=$NODE_ENV > config.json",
-    "serve": "node -r dotenv/config ./node_modules/.bin/rejoice -c config.json -p `pwd`",
+    "serve": "node -r dotenv/config -r newrelic ./node_modules/.bin/rejoice -c config.json -p `pwd`",
     "start": "npm run config && npm run serve",
     "test": "lab -c -L -r console -o stdout -r lcov -o lcov.info"
   },

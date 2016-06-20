@@ -7,7 +7,12 @@
     "plugins": {
         "$filter": "env",
         "$base": {
-            "./lib/monitor": {},
+            "./lib/monitor": {
+                "rollbar": {
+                    "accessToken": "$env.ROLLBAR_ACCESS_TOKEN",
+                    "endpoint": "$env.ROLLBAR_ENDPOINT"
+                }
+            },
             "vision": {},
             "visionary": {
                 "engines": { "hbs": "handlebars" },
@@ -40,7 +45,7 @@
                 }
             }
         },
-        "prod": {
+        "production": {
             "visionary": {
                 "context": {
                     "measure": true

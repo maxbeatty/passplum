@@ -16,5 +16,9 @@ exports.config = {
          * production applications.
          */
         level: 'info'
+    },
+    slow_sql: { // eslint-disable-line camelcase
+        enabled: true,
+        max_samples: 10 // eslint-disable-line camelcase
     }
 };
