@@ -7,6 +7,7 @@
     "plugins": {
         "$filter": "env",
         "$base": {
+            "./lib/monitor": {},
             "vision": {},
             "visionary": {
                 "engines": { "hbs": "handlebars" },
