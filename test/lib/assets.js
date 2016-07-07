@@ -1,3 +1,5 @@
+'use strict';
+
 const Lab = require('lab');
 const Code = require('code');
 const Hapi = require('hapi');
@@ -5,10 +7,10 @@ const Hapi = require('hapi');
 const Icons = require('../../lib/assets');
 
 const lab = exports.lab = Lab.script();
-const expect = Code.expect;
-var request, server;
+let request;
+let server;
 
-lab.beforeEach(function (done) {
+lab.beforeEach((done) => {
 
     server = new Hapi.Server();
 
@@ -19,9 +21,9 @@ lab.beforeEach(function (done) {
     server.register([require('inert'), Icons], done);
 });
 
-lab.experiment('Icons', function () {
+lab.experiment('Icons', () => {
 
-    lab.beforeEach(function (done) {
+    lab.beforeEach((done) => {
 
         request = {
             method: 'GET'
@@ -30,10 +32,10 @@ lab.experiment('Icons', function () {
         done();
     });
 
-    lab.test('favicon.ico', function (done) {
+    lab.test('favicon.ico', (done) => {
 
         request.url = '/favicon.ico';
-        server.inject(request, function (response) {
+        server.inject(request, (response) => {
 
             Code.expect(response.statusCode).to.equal(200);
 

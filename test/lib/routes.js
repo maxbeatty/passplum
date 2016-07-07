@@ -1,3 +1,5 @@
+'use strict';
+
 const Path = require('path');
 const Lab = require('lab');
 const Code = require('code');
@@ -5,17 +7,17 @@ const Hapi = require('hapi');
 const Sinon = require('sinon');
 const Proxyquire = require('proxyquire');
 
-var VaultMock = {};
+const VaultMock = {};
 
 const Routes = Proxyquire('../../lib/routes', {
     './vault': VaultMock
 });
 
 const lab = exports.lab = Lab.script();
-const expect = Code.expect;
-var request, server;
+let request;
+let server;
 
-lab.beforeEach(function (done) {
+lab.beforeEach((done) => {
 
     server = new Hapi.Server();
 
@@ -34,9 +36,9 @@ lab.beforeEach(function (done) {
     });
 });
 
-lab.experiment('Routes', function () {
+lab.experiment('Routes', () => {
 
-    lab.beforeEach(function (done) {
+    lab.beforeEach((done) => {
 
         request = {
             method: 'GET',
@@ -48,11 +50,11 @@ lab.experiment('Routes', function () {
         done();
     });
 
-    lab.test('renders passphrase', function (done) {
+    lab.test('renders passphrase', (done) => {
 
         VaultMock.fetch.returns(Promise.resolve('test pass'));
 
-        server.inject(request, function (response) {
+        server.inject(request, (response) => {
 
             Code.expect(response.statusCode).to.equal(200);
 
@@ -60,12 +62,12 @@ lab.experiment('Routes', function () {
         });
     });
 
-    lab.test('catches error', function (done) {
+    lab.test('catches error', (done) => {
 
         const testErr = new Error('testing');
         VaultMock.fetch.returns(Promise.reject(testErr));
 
-        server.inject(request, function (response) {
+        server.inject(request, (response) => {
 
             Code.expect(response.statusCode).to.equal(500);
 

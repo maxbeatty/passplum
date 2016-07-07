@@ -1,3 +1,5 @@
+'use strict';
+
 const Lab = require('lab');
 const Code = require('code');
 const Sinon = require('sinon');
@@ -15,18 +17,18 @@ const Helpers = require('../../lib/helpers');
 const lab = exports.lab = Lab.script();
 const expect = Code.expect;
 
-lab.experiment('Helpers', function () {
+lab.experiment('Helpers', () => {
 
-    lab.test('getRandomInt', function (done) {
+    lab.test('getRandomInt', (done) => {
 
         expect(Helpers.getRandomInt(1, 10)).to.be.a.number();
 
         done();
     });
 
-    lab.experiment('getRandomIntSet', function () {
+    lab.experiment('getRandomIntSet', () => {
 
-        lab.test('returns array of unique numbers', function (done) {
+        lab.test('returns array of unique numbers', (done) => {
 
             const len = 4;
             const res = Helpers.getRandomIntSet(1, 10, len);
@@ -37,7 +39,7 @@ lab.experiment('Helpers', function () {
             done();
         });
 
-        lab.test('throws error if range smaller than set size', function (done) {
+        lab.test('throws error if range smaller than set size', (done) => {
 
             const min = 2;
             const max = 4;
@@ -53,7 +55,7 @@ lab.experiment('Helpers', function () {
             done();
         });
 
-        lab.test('throws error if cannot generate len random numbers in max tries', function (done) {
+        lab.test('throws error if cannot generate len random numbers in max tries', (done) => {
 
             const s = Sinon.stub(Helpers, 'getRandomInt').returns(1);
 
@@ -70,30 +72,30 @@ lab.experiment('Helpers', function () {
         });
     });
 
-    lab.test('factorial', function (done) {
+    lab.test('factorial', (done) => {
 
         expect(Helpers.factorial(3)).to.equal(6);
 
         done();
     });
 
-    lab.test('combinations', function (done) {
+    lab.test('combinations', (done) => {
 
         expect(Helpers.combinations(10, 3)).to.equal(120);
 
         done();
     });
 
-    lab.experiment('generateSaltedHash', function () {
+    lab.experiment('generateSaltedHash', () => {
 
-        lab.test('resolves reproducable hash', function (done) {
+        lab.test('resolves reproducable hash', (done) => {
 
             const str = 'testing';
 
             Promise.all([
                 Helpers.generateSaltedHash(str),
                 Helpers.generateSaltedHash(str)
-            ]).then(function (hashes) {
+            ]).then((hashes) => {
 
                 expect(hashes[0]).to.equal(hashes[1]);
 
@@ -101,12 +103,12 @@ lab.experiment('Helpers', function () {
             }).catch(done);
         });
 
-        lab.test('rejects pbkdf2 errors', function (done) {
+        lab.test('rejects pbkdf2 errors', (done) => {
 
             const testErr = new Error('testing');
             const s = Sinon.stub(Crypto, 'pbkdf2').callsArgWith(5, testErr);
 
-            Helpers.generateSaltedHash('testing').catch(function (err) {
+            Helpers.generateSaltedHash('testing').catch((err) => {
 
                 expect(err).to.equal(testErr);
 

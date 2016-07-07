@@ -1,3 +1,5 @@
+'use strict';
+
 const Lab = require('lab');
 const Code = require('code');
 const Sinon = require('sinon');
@@ -7,11 +9,11 @@ const Word = require('../../../lib/models/stat');
 const lab = exports.lab = Lab.script();
 const expect = Code.expect;
 
-lab.experiment('Stat Model', function () {
+lab.experiment('Stat Model', () => {
 
-    lab.test('definition', function (done) {
+    lab.test('definition', (done) => {
 
-        var defineStub = Sinon.stub();
+        const defineStub = Sinon.stub();
 
         Word({ define: defineStub }, {
             INTEGER: true,

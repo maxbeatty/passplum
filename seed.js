@@ -1,3 +1,5 @@
+'use strict';
+
 require('dotenv').config();
 const Db = require('./lib/db');
 const Fs = require('fs');
@@ -16,7 +18,7 @@ ParseCsv.prototype._transform = function (data, encoding, callback) {
 
     lines = data.toString().split('\n');
 
-    for (var l of lines) {
+    for (const l of lines) {
         this.push(l);
     }
 
@@ -33,7 +35,7 @@ Util.inherits(Create, Stream.Writable);
 Create.prototype._write = function (chunk, encoding, callback) {
 
     Db.word.create({ word: chunk.toString() }, { logging: console.log })
-        .then(function (word) {
+        .then((word) => {
 
             console.log('Added: ' + word.word);
             callback(null);
@@ -52,12 +54,12 @@ p.on('error', reject);
 
 const c = new Create();
 c.on('error', reject);
-c.on('finish', function () {
+c.on('finish', () => {
 
     process.exit();
 });
 
-Db.sequelize.sync().then(function () {
+Db.sequelize.sync().then(() => {
 
     Fs.createReadStream(process.env.SEED_FILE)
         .pipe(p)

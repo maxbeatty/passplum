@@ -1,22 +1,24 @@
+'use strict';
+
 const Lab = require('lab');
 const Code = require('code');
 const Sinon = require('sinon');
 const Proxyquire = require('proxyquire');
 
-var score = 4;
-var ZMock = function () {
+let score = 4;
+const ZMock = function () {
 
     return {
         score: score
     };
 };
 
-var DbMock = {
+const DbMock = {
     word: {},
     used: {},
     stat: {}
 };
-var HelpersMock = {};
+const HelpersMock = {};
 
 const Vault = Proxyquire('../../lib/vault', {
     'zxcvbn': ZMock,
@@ -26,29 +28,29 @@ const Vault = Proxyquire('../../lib/vault', {
 
 const lab = exports.lab = Lab.script();
 const expect = Code.expect;
-var s;
+let s;
 
-lab.beforeEach(function (done) {
+lab.beforeEach((done) => {
 
     s = Sinon.sandbox.create();
 
     done();
 });
 
-lab.afterEach(function (done) {
+lab.afterEach((done) => {
 
     s.restore();
 
     done();
 });
 
-lab.experiment('Vault', function () {
+lab.experiment('Vault', () => {
 
-    lab.experiment('fetch', function () {
+    lab.experiment('fetch', () => {
 
         const tries = 2;
 
-        lab.beforeEach(function (done) {
+        lab.beforeEach((done) => {
 
             HelpersMock.getRandomIntSet = s.stub().returns([2, 1, 4, 3]);
             HelpersMock.generateSaltedHash = s.stub().returns(Promise.resolve('reallylonghash'));
@@ -76,13 +78,13 @@ lab.experiment('Vault', function () {
             done();
         });
 
-        lab.test('returns password', function (done) {
+        lab.test('returns password', (done) => {
 
             DbMock.used.findOrCreate.returns(Promise.resolve([null, true]));
 
             DbMock.stat.create.returns(Promise.resolve());
 
-            Vault.fetch(tries, score).then(function (passphrase) {
+            Vault.fetch(tries, score).then((passphrase) => {
 
                 expect(passphrase).to.equal('marbles pony apple snooze');
 
@@ -91,14 +93,14 @@ lab.experiment('Vault', function () {
 
         });
 
-        lab.test('retries and errors if not enough random words found', function (done) {
+        lab.test('retries and errors if not enough random words found', (done) => {
 
             DbMock.word.findAll.returns(Promise.resolve([{
                 word: 'marbles',
                 increment: s.stub().returns(Promise.resolve())
             }]));
 
-            Vault.fetch(tries, score).catch(function (err) {
+            Vault.fetch(tries, score).catch((err) => {
 
                 expect(err.message).to.contain('pieces');
                 expect(DbMock.word.findAll.callCount).to.equal(tries);
@@ -107,13 +109,13 @@ lab.experiment('Vault', function () {
             });
         });
 
-        lab.test('retries and errors if passphrase not strong enough', function (done) {
+        lab.test('retries and errors if passphrase not strong enough', (done) => {
 
-            var threshold = score;
+            const threshold = score;
             // ZMock at the top returns score
             score = threshold - 1;
 
-            Vault.fetch(tries, threshold).catch(function (err) {
+            Vault.fetch(tries, threshold).catch((err) => {
 
                 expect(err.message).to.contain('strong');
                 expect(HelpersMock.generateSaltedHash.called).to.be.false();
@@ -122,11 +124,11 @@ lab.experiment('Vault', function () {
             });
         });
 
-        lab.test('retries and errors if passphrase has been used', function (done) {
+        lab.test('retries and errors if passphrase has been used', (done) => {
 
             DbMock.used.findOrCreate.returns(Promise.resolve([null, false]));
 
-            Vault.fetch(tries, score).catch(function (err) {
+            Vault.fetch(tries, score).catch((err) => {
 
                 expect(err.message).to.contain('unique');
                 expect(DbMock.used.findOrCreate.callCount).to.equal(tries);

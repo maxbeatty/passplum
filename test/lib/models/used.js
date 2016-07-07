@@ -1,3 +1,5 @@
+'use strict';
+
 const Lab = require('lab');
 const Code = require('code');
 const Sinon = require('sinon');
@@ -7,11 +9,11 @@ const Used = require('../../../lib/models/used');
 const lab = exports.lab = Lab.script();
 const expect = Code.expect;
 
-lab.experiment('Used Model', function () {
+lab.experiment('Used Model', () => {
 
-    lab.test('definition', function (done) {
+    lab.test('definition', (done) => {
 
-        var defineStub = Sinon.stub();
+        const defineStub = Sinon.stub();
 
         Used({ define: defineStub }, { STRING: true });
 
