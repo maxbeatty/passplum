@@ -1,4 +1,4 @@
-# passplum [![Build Status](https://travis-ci.org/maxbeatty/passplum.svg)](https://travis-ci.org/maxbeatty/passplum) [![Code Climate](https://codeclimate.com/github/maxbeatty/passplum/badges/gpa.svg)](https://codeclimate.com/github/maxbeatty/passplum) [![Test Coverage](https://codeclimate.com/github/maxbeatty/passplum/badges/coverage.svg)](https://codeclimate.com/github/maxbeatty/passplum)
+# passplum [![Build Status](https://travis-ci.org/maxbeatty/passplum.svg)](https://travis-ci.org/maxbeatty/passplum) [![Code Climate](https://codeclimate.com/github/maxbeatty/passplum/badges/gpa.svg)](https://codeclimate.com/github/maxbeatty/passplum) [![Test Coverage](https://codeclimate.com/github/maxbeatty/passplum/badges/coverage.svg)](https://codeclimate.com/github/maxbeatty/passplum) [![NSP Status](https://nodesecurity.io/orgs/maxbeatty/projects/9a81a166-ba71-405c-967f-9e02d791f241/badge)](https://nodesecurity.io/orgs/maxbeatty/projects/9a81a166-ba71-405c-967f-9e02d791f241)
 
 > Easier, Better Passwords
 
