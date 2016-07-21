@@ -35,7 +35,7 @@
     "redis": "^2.0.1",
     "rejoice": "^2.0.1",
     "rollbar": "0.6.2",
-    "sequelize": "^3.6.0",
+    "sequelize": "3.23.6",
     "vision": "^3.0.0",
     "visionary": "^3.0.1",
     "zxcvbn": "^3.2.2",
