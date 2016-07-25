@@ -4,3 +4,6 @@ patch:
   'npm:marked:20150520':
     - npm-shrinkwrap > msee > marked:
         patched: '2016-07-07T22:02:27.573Z'
+  'npm:tough-cookie:20160722':
+    - npm-shrinkwrap > npm > request > tough-cookie:
+        patched: '2016-07-25T09:55:18.345Z'

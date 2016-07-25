@@ -39,7 +39,7 @@
     "vision": "^3.0.0",
     "visionary": "^3.0.1",
     "zxcvbn": "^3.2.2",
-    "snyk": "^1.17.0"
+    "snyk": "^1.17.1"
   },
   "devDependencies": {
     "blipp": "^2.3.0",
