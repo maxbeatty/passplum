@@ -92,7 +92,7 @@ lab.experiment('RateLimit', () => {
 
     lab.test('catches error from ratelimiter', (done) => {
 
-        RateLimiterGetStub.callsArgWith(0, new Error());
+        RateLimiterGetStub.callsArgWith(0, new Error('unit testing'));
 
         server.inject(request, (response) => {
 

@@ -4,22 +4,20 @@
 
 ## Getting Started
 
-You'll need [Node.js](https://nodejs.org/en/), [a sequelize compatible database](http://sequelize.readthedocs.org/en/latest/docs/getting-started/#installation) like [postgres](www.postgresql.org), and [redis](http://redis.io/) for rate-limiting.
+You'll need [Node.js](https://nodejs.org/en/), [postgres](www.postgresql.org), and [redis](http://redis.io/).
 
-Populate these environment variables or declare them in a `.env` file in the root of the project. _Development defaults provided._
+### 1. Environment Variables
+
+Populate these environment variables (_development defaults provided_):
 
 ```
-PORT=3000
-
-DATABASE_URL=postgres://user:pass@host:5432/dbname
-
+NODE_ENV=development
 CRYPTO_SALT=passplum
-CRYPTO_ITERATIONS=4096
-CRYPTO_KEY_LEN=512
-CRYPTO_DIGEST=sha256
-
-REDIS_URL=redis://user:pass@host:12345
+DATABASE_URL=postgres://user:pass@host:5432/dbname
+REDIS_URL=redis://user:pass@host:6379
 ```
+
+### 2. Dependencies
 
 Install dependencies:
 
@@ -27,21 +25,23 @@ Install dependencies:
 npm install
 ```
 
+### 3. Seeding Data
+
+You can use any set of words you like. Put one word per line in a text file. See [`example-seed-data.csv`](https://github.com/maxbeatty/passplum/blob/master/example-seed-data.csv) as an example.
+
+```
+DATABASE_URL=postgres://user:pass@host:5432/dbname SEED_FILE=lib/seed/example-seed-data.csv node lib/seed
+```
+
+### 4. Start
+
 Start the server:
 
 ```
-NODE_ENV=dev npm start
+NODE_ENV=development npm start
 ```
 
-You should now be able to open [http://localhost:8000](http://localhost:8000) to get a great password.
-
-### Seeding Data
-
-You can use any set of words you like. Put one word per line in a text file. See [`example-seed-data.csv`](https://github.com/maxbeatty/passplum/blob/master/example-seed-data.csv) as an example. Running the initial database migration with the `SEED_FILE` environment variable will populate your database.
-
-```
-SEED_FILE=example-seed-data.csv node seed.js
-```
+You should now be able to open [http://localhost:8888](http://localhost:8888) to get a great password.
 
 ## Scripts
 
@@ -50,7 +50,7 @@ SEED_FILE=example-seed-data.csv node seed.js
 Start server specifying an environment. The environment dictates which plugins are enabled in [`confidence.json`](https://github.com/maxbeatty/passplum/blob/master/confidence.json)
 
 ```
-NODE_ENV=prod npm start
+npm start
 ```
 
 ### test

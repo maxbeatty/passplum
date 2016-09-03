@@ -3,12 +3,10 @@
   "version": "1.0.0",
   "description": "Easier, Better Passwords",
   "scripts": {
-    "config": "node -r dotenv/config ./node_modules/.bin/confidence -c confidence.json --filter.env=$NODE_ENV > config.json",
-    "serve": "node -r dotenv/config -r newrelic ./node_modules/.bin/rejoice -c config.json -p `pwd`",
-    "start": "npm run config && npm run serve",
+    "deploy": "now -e ROLLBAR_ACCESS_TOKEN=@pp-rollbar-access-token -e ROLLBAR_ENDPOINT=@pp-rollbar-endpoint -e DATABASE_URL=@pp-db-url -e REDIS_URL=@pp-redis-url -e CRYPTO_SALT=@pp-crypto-salt",
+    "start": "node lib/",
     "test": "lab -c -L -r console -o stdout -r lcov -o lcov.info",
-    "snyk-protect": "snyk protect",
-    "prepublish": "npm run snyk-protect"
+    "snyk-protect": "snyk protect"
   },
   "repository": {
     "type": "git",
@@ -17,36 +15,26 @@
   "author": "Max Beatty",
   "license": "MIT",
   "dependencies": {
-    "boom": "^2.9.0",
-    "confidence": "^1.2.0",
-    "debug": "^2.2.0",
-    "dotenv": "^1.2.0",
-    "good": "^6.3.0",
-    "good-console": "^5.0.3",
-    "handlebars": "^4.0.2",
+    "boom": "2.9.0",
+    "handlebars": "4.0.2",
     "hapi": "11.1.4",
-    "inert": "^3.0.1",
-    "joi": "^6.7.1",
-    "newrelic": "1.28.1",
-    "npm-shrinkwrap": "200.5.1",
-    "pg": "^4.4.1",
-    "pg-hstore": "^2.3.2",
-    "ratelimiter": "^2.0.1",
-    "redis": "^2.0.1",
-    "rejoice": "^2.0.1",
+    "inert": "3.0.1",
+    "joi": "6.7.1",
+    "pg": "6.1.0",
+    "pg-hstore": "2.3.2",
+    "ratelimiter": "2.0.1",
+    "redis": "2.0.1",
     "rollbar": "0.6.2",
-    "sequelize": "^3.6.0",
-    "vision": "^3.0.0",
-    "visionary": "^3.0.1",
-    "zxcvbn": "^3.2.2",
-    "snyk": "^1.17.0"
+    "sequelize": "3.24.1",
+    "vision": "3.0.0",
+    "zxcvbn": "3.2.2"
   },
   "devDependencies": {
-    "blipp": "^2.3.0",
     "code": "3.0.1",
     "lab": "10.8.2",
-    "proxyquire": "^1.7.1",
-    "sinon": "^1.16.1"
+    "proxyquire": "1.7.1",
+    "sinon": "1.16.1",
+    "snyk": "1.17.0"
   },
   "engines": {
     "node": "6.x.x"
