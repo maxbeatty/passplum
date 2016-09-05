@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Easier, Better Passwords",
   "scripts": {
-    "deploy": "now -e ROLLBAR_ACCESS_TOKEN=@pp-rollbar-access-token -e ROLLBAR_ENDPOINT=@pp-rollbar-endpoint -e DATABASE_URL=@pp-db-url -e REDIS_URL=@pp-redis-url -e CRYPTO_SALT=@pp-crypto-salt",
+    "deploy": "now --public -e ROLLBAR_ACCESS_TOKEN=@pp-rollbar-access-token -e ROLLBAR_ENDPOINT=@pp-rollbar-endpoint -e DATABASE_URL=@pp-db-url -e REDIS_URL=@pp-redis-url -e CRYPTO_SALT=@pp-crypto-salt",
     "start": "node lib/",
     "test": "lab -c -L -r console -o stdout -r lcov -o lcov.info",
     "snyk-protect": "snyk protect"
