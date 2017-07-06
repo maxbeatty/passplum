@@ -24,7 +24,7 @@
     "pg-hstore": "2.3.2",
     "ratelimiter": "2.0.1",
     "redis": "2.0.1",
-    "rollbar": "0.6.2",
+    "rollbar": "2.1.0",
     "sequelize": "3.24.1",
     "vision": "3.0.0",
     "zxcvbn": "3.2.2"
