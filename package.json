@@ -6,7 +6,8 @@
     "deploy": "now --public -e NODE_ENV=production -e ROLLBAR_ACCESS_TOKEN=@pp-rollbar-access-token -e DATABASE_URL=@pp-db-url -e REDIS_URL=@pp-redis-url -e CRYPTO_SALT=@pp-crypto-salt",
     "start": "node lib/",
     "test": "lab -c -L -t 77 -r console -o stdout -r lcov -o lcov.info",
-    "snyk-protect": "snyk protect"
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -27,14 +28,14 @@
     "rollbar": "0.6.2",
     "sequelize": "3.24.1",
     "vision": "3.0.0",
-    "zxcvbn": "3.2.2"
+    "zxcvbn": "3.2.2",
+    "snyk": "^1.30.1"
   },
   "devDependencies": {
     "code": "3.0.1",
     "lab": "10.8.2",
     "proxyquire": "1.7.1",
-    "sinon": "1.16.1",
-    "snyk": "1.17.0"
+    "sinon": "1.16.1"
   },
   "engines": {
     "node": ">=6.0.0",
