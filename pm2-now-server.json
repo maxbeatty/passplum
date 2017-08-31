@@ -1,0 +1,36 @@
+{
+    "apps": [
+        {
+            "name": "pp-now-server",
+            "script": "now-server",
+            "args": "--rules pm2-now-server.json --log",
+            "watch": [
+                "pm2-now-server.json"
+            ]
+        },
+        {
+            "name": "pp-assets",
+            "cwd": "./packages/assets",
+            "script": "npm",
+            "args": "start"
+        },
+        {
+            "name": "pp-web",
+            "cwd": "./packages/web",
+            "script": "npm",
+            "args": "run dev",
+            "env": {
+                "PORT": 3001
+            }
+        }
+    ],
+    "rules": [
+        {
+            "pathname": "/",
+            "dest": "http://localhost:3001"
+        },
+        {
+            "dest": "http://localhost:5000"
+        }
+    ]
+}
