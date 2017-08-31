@@ -1,0 +1,86 @@
+{
+  "name": "@passplum/web",
+  "version": "2.0.0",
+  "description": "web site",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "micro",
+    "dev": "micro-dev -p ${PORT:-3000}",
+    "flow": "flow",
+    "lint": "xo",
+    "test": "NODE_ENV=test nyc ava"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/maxbeatty/passplum"
+  },
+  "author": "Max Beatty",
+  "license": "MIT",
+  "devDependencies": {
+    "ava": "^0.22.0",
+    "babel-eslint": "^7.2.3",
+    "eslint-config-prettier": "^2.3.0",
+    "eslint-plugin-flowtype": "^2.35.0",
+    "eslint-plugin-prettier": "^2.2.0",
+    "flow-bin": "^0.53.1",
+    "micro-dev": "^1.2.2",
+    "nyc": "^11.1.0",
+    "prettier": "^1.6.1",
+    "xo": "^0.18.2"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.105.0",
+    "keen-tracking": "^1.2.0",
+    "micro": "^8.0.3",
+    "rollbar": "^2.2.6",
+    "zxcvbn": "^4.4.2"
+  },
+  "xo": {
+    "extends": [
+      "plugin:flowtype/recommended",
+      "prettier",
+      "prettier/flowtype"
+    ],
+    "plugins": [
+      "flowtype",
+      "prettier"
+    ],
+    "env": {
+      "node": true
+    },
+    "ignores": [
+      "flow-typed/**/*"
+    ],
+    "rules": {
+      "spaced-comment": [
+        "error",
+        "always",
+        {
+          "markers": [
+            ":",
+            "::"
+          ]
+        }
+      ]
+    }
+  },
+  "now": {
+    "name": "passplum-web",
+    "public": false,
+    "env": {
+      "NODE_ENV": "production",
+      "ROLLBAR_ACCESS_TOKEN": "@pp-rollbar-access-token",
+      "CRYPTO_SALT": "@pp-crypto-salt",
+      "AWS_DEFAULT_REGION": "us-west-1",
+      "AWS_ACCESS_KEY_ID": "@pp-aws-key",
+      "AWS_SECRET_ACCESS_KEY": "@pp-aws-secret",
+      "KEEN_PROJECT_ID": "@pp-keen-project-id",
+      "KEEN_WRITE_KEY": "@pp-keen-write-key"
+    },
+    "files": [
+      "src/",
+      "example-seed-data.json",
+      "seed-data.json"
+    ]
+  }
+}
