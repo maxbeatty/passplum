@@ -1,8 +1,12 @@
 node_modules/
 npm-debug.log
 lcov.info
-.terraform/
-terraform.tfstate*
+
+# terraform
+*.tfstate
+*.tfstate.backup
+.terraform*
+terraform.tfvars
 
 # coverage
 .nyc_output
