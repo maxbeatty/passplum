@@ -14,7 +14,7 @@ const MAX_TRIES = 10;
 
 module.exports = async () => {
     // Make LEN, SEPARATOR, SCORE_THRESHOLD query params?
-    const LEN = 4;
+    const LEN = 6;
     const SEPARATOR = '-';
     const SCORE_THRESHOLD = 4;
     const passphrase = await fetch(MAX_TRIES, LEN, SEPARATOR, SCORE_THRESHOLD);
