@@ -64,6 +64,9 @@
       ]
     }
   },
+  "engines": {
+    "node": ">=8.4.0"
+  },
   "now": {
     "name": "passplum-web",
     "public": false,

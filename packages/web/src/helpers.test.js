@@ -7,20 +7,19 @@ const {
     getNumberWord
 } = require('./helpers');
 
-test('getRandomIntSet', t => {
+test('getRandomIntSet', async t => {
     t.plan(5);
 
-    const err = t.throws(() => {
-      getRandomIntSet(1, 2, 3);
-    }, Error);
+    // Can't get 6 numbers from a range of 2, 3, 4
+    const thrownError = await t.throws(getRandomIntSet(2, 4, 6), Error);
 
-    t.regex(err.message, /^Range \(1 - 2\)/);
+    t.regex(thrownError.message, /^Range \(2 - 4\)/);
 
     const min = 2;
     const max = 20;
     const len = 4;
-    const intSet = getRandomIntSet(min, max, len);
-    
+    const intSet = await getRandomIntSet(min, max, len);
+
     t.true(len === intSet.length);
     t.true(max >= Math.max(...intSet));
     t.true(min <= Math.min(...intSet));
@@ -50,16 +49,16 @@ test('permutations', t => {
 
 test('getNumberWord', t => {
     const tests = [
-        [1, "1"], 
-        [12, "12" ], 
-        [123, "123"], 
-        [1234, "1 thousand"], 
+        [1, "1"],
+        [12, "12" ],
+        [123, "123"],
+        [1234, "1 thousand"],
         [12345, "12 thousand"],
         [123456, "123 thousand"],
-        [1234567, "1 million"], 
-        [12345678, "12 million"], 
-        [123456789, "123 million"], 
-        [1234567890, "1 billion"], 
+        [1234567, "1 million"],
+        [12345678, "12 million"],
+        [123456789, "123 million"],
+        [1234567890, "1 billion"],
         [12345678901, "12 billion"],
         [123456789012, "123 billion"],
         [1234567890123, "1 trillion"],
@@ -67,7 +66,7 @@ test('getNumberWord', t => {
         [123456789012345, "123 trillion"],
         [1234567890123456, "1 quadrillion"]
     ];
-    
+
     t.plan(tests.length);
 
     tests.forEach(([input, output]) => {

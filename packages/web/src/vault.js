@@ -39,7 +39,7 @@ async function fetch(
         throw new Error("Unable to generate strong passphrase");
     }
   try {
-    const rndIntSet = getRandomIntSet(min, max, howLong);
+    const rndIntSet = await getRandomIntSet(min, max, howLong);
     const words = rndIntSet.map(i => data[i]);
 
     const phrase = words.join(sep);
@@ -54,7 +54,7 @@ async function fetch(
     // Has this phrase been used?
     const hash = await generateSaltedHash(phrase);
     await hasBeenUsed(hash);
-    
+
     // Record analysis and use of words
     await saveAnalysis(analysis)
     await countWordUse(words)
