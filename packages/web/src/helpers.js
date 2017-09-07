@@ -1,21 +1,20 @@
 // @flow
 
 const Crypto = require('crypto');
+const secureRandomNumber = require("./csprng");
 
 const {CRYPTO_SALT} = process.env;
-let salt;
+let salt = 'will be filled but initial value needed for tests';
 if (CRYPTO_SALT) {
   salt = CRYPTO_SALT;
 } else {
   console.warn('Missing CRYPTO_SALT environment variable. Setting temporary one.');
-  salt = Crypto.randomBytes(getRandomInt(50, 100)).toString('hex');
+  secureRandomNumber(50, 100).then(num => {
+    salt = Crypto.randomBytes(num).toString('hex');
+  })
 }
 
-function getRandomInt(min /* : number */, max /* : number */) /* : number */ {
-	return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-exports.getRandomIntSet = function (min /*: number */, max /*: number */, len /*: number */) /*: Array<number> */ {
+exports.getRandomIntSet = async function (min /*: number */, max /*: number */, len /*: number */) /*: Promise<Array<number>> */ {
 	if (max - min + 1 < len) {
 		throw new Error(
       `Range (${min} - ${max}) smaller than set size (${len}). No way to make unique members.`
@@ -27,7 +26,7 @@ exports.getRandomIntSet = function (min /*: number */, max /*: number */, len /*
 	const s = new Set();
 
 	while (s.size < len && tries < MAX_TRIES) {
-		s.add(getRandomInt(min, max));
+		s.add(await secureRandomNumber(min, max)); // eslint-disable-line no-await-in-loop
 		tries++;
 	}
 
@@ -71,7 +70,7 @@ exports.getNumberWord = function (num /*: number */) /*: string */ {
   const nl = n.length;
   let z = 0; // Zeros
   let d = '';
-  
+
   if (nl >= 16) {
     z = 15;
     d = 'quadrillion'
