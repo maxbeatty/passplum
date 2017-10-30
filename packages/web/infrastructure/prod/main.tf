@@ -1,22 +1,22 @@
 terraform {
   backend "s3" {
-    bucket = "passplum-tf"
-    key    = "prod/web.tf"
+    bucket  = "passplum-tf"
+    key     = "prod/web.tf"
     profile = "passplum"
-    region = "us-west-1"
+    region  = "us-west-1"
   }
 }
 
 provider "aws" {
-    profile = "passplum"
-    region = "us-west-1"
+  profile = "passplum"
+  region  = "us-west-1"
 }
 
 module "dynamodb_tables" {
   source = "../_modules/dynamodb_tables"
 
   environment = "production"
-  capacity = 20
+  capacity    = 10
 }
 
 resource "aws_iam_user" "web" {
@@ -25,27 +25,33 @@ resource "aws_iam_user" "web" {
 
 data "aws_iam_policy_document" "web" {
   statement {
-    effect    = "Allow"
-    actions   = [
+    effect = "Allow"
+
+    actions = [
       "dynamodb:GetItem",
       "dynamodb:PutItem",
-      "dynamodb:UpdateItem"
+      "dynamodb:UpdateItem",
     ]
-    resources = ["*"]  
+
+    resources = ["*"]
   }
-} 
-resource "aws_iam_user_policy" "web" {  
+}
+
+resource "aws_iam_user_policy" "web" {
   name   = "web"
   user   = "${aws_iam_user.web.name}"
   policy = "${data.aws_iam_policy_document.web.json}"
-} 
+}
+
 resource "aws_iam_access_key" "web" {
   user    = "${aws_iam_user.web.name}"
   pgp_key = "keybase:maxbeatty"
 }
+
 output "key" {
   value = "${aws_iam_access_key.web.id}"
 }
+
 output "secret" {
   value = "${aws_iam_access_key.web.encrypted_secret}"
 }

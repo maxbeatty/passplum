@@ -13,8 +13,12 @@ Pass Plum is designed so you can run your own instance with a custom dictionary 
 ```json
 [
     "red",
-    "green"
-    "blue"
+    "orange",
+    "yellow",
+    "green",
+    "blue",
+    "indigo",
+    "violet"
 ]
 ```
 
