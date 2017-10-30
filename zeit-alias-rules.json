@@ -1,11 +1,11 @@
 {
     "rules": [
         {
-            "pathname": "/",
-            "dest": "web.passplum.com"
+            "pathname": "/assets/*",
+            "dest": "assets.passplum.com"
         },
         {
-            "dest": "assets.passplum.com"
+            "dest": "web.passplum.com"
         }
     ]
 }
