@@ -101,7 +101,7 @@ exports.getNumberWord = function(num /*: number */) /*: string */ {
 
   let s = Math.floor(num / Math.pow(10, z));
 
-  // make huge, huge numbers reasonable
+  // Make huge, huge numbers reasonable
   if (s > 1000) {
     s = 999;
   }

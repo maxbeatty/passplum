@@ -29,7 +29,7 @@ module.exports = async (req /*: http$IncomingMessage */) => {
     }
 
     if (query.sep) {
-        SEPARATOR = query.sep[0]; // single character separator
+        SEPARATOR = query.sep[0]; // Single character separator
     }
   }
 
