@@ -1,5 +1,6 @@
 // @flow
 
+const { parse } = require("url");
 const Rollbar = require("rollbar");
 const { fetch, getPermutations } = require("./vault");
 
@@ -11,16 +12,32 @@ const rollbar = new Rollbar({
 });
 
 const MAX_TRIES = 10;
+const MAX_LEN = 7;
 
-module.exports = async () => {
-    // Make LEN, SEPARATOR, SCORE_THRESHOLD query params?
-    const LEN = 4;
-    const SEPARATOR = '-';
-    const SCORE_THRESHOLD = 4;
-    const passphrase = await fetch(MAX_TRIES, LEN, SEPARATOR, SCORE_THRESHOLD);
-    const permutations = getPermutations(LEN);
-    
-    return `
+module.exports = async (req /*: http$IncomingMessage */) => {
+  const { query } = parse(req.url, true);
+
+  let LENGTH /*: number */ = 4;
+  let SEPARATOR = "-";
+
+  if (query) {
+    if (query.w) {
+        LENGTH = Number(query.w);
+        if (LENGTH > MAX_LEN) {
+            LENGTH = MAX_LEN;
+        }
+    }
+
+    if (query.sep) {
+        SEPARATOR = query.sep[0]; // single character separator
+    }
+  }
+
+  const SCORE_THRESHOLD = 4; // Zxcvbn maximum
+  const passphrase = await fetch(MAX_TRIES, LENGTH, SEPARATOR, SCORE_THRESHOLD);
+  const permutations = getPermutations(LENGTH);
+
+  return `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -30,12 +47,13 @@ module.exports = async () => {
 
     <title>Pass Plum</title>
 
-    <link rel="apple-touch-icon" sizes="76x76" href="/touch-icon-ipad.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="/touch-icon-iphone-retina.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/touch-icon-ipad-retina.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/touch-icon-iphone-retina-hd.png">
+    <link rel="icon" href="/assets/favicon.ico">
+    <link rel="apple-touch-icon" sizes="76x76" href="/assets/touch-icon-ipad.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/assets/touch-icon-iphone-retina.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/assets/touch-icon-ipad-retina.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/assets/touch-icon-iphone-retina-hd.png">
 
-    <link rel="stylesheet" href="/main.css">
+    <link rel="stylesheet" href="/assets/main.css">
 
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -67,8 +85,44 @@ module.exports = async () => {
             </p>
 
             <h3 class="u-center i">There are over <strong class="highlight">${permutations}</strong> permutations to give out</h3>
-        </section>
 
+            <p>
+            You can customize passphrases to use more words and different separators.
+            </p>
+        </section>
+    </article>
+
+    <form class="sans-serif" method="get" action="/">
+        <fieldset>
+            <p>
+                <label for="w">Words</label>
+
+                <select id="w" name="w">
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                </select>
+            </p>
+
+            <p>
+                <label for="sep">Separator</label>
+            
+                <select id="sep" name="sep">
+                    <option value="-">hyphen</option>
+                    <option value="_">underscore</option>
+                    <option value=".">period</option>
+                    <option value="+">plus</option>
+                    <option value=" ">space</option>
+                </select>
+            </p>
+            
+            <p><button type="submit">Generate</button></p>
+        </fieldset>
+    </form>
+
+    <article class="serif">
         <section>
             <h2>Why?</h2>
 
@@ -97,7 +151,7 @@ module.exports = async () => {
     <footer class="u-center sans-serif">
         Created by <a href="https://maxbeatty.com">Max Beatty</a>
         <br />
-        <span role="img" aria-label="flag of United States">🇺🇸</span>
+        <span role="img" aria-label="flag of United States" style="line-height: 3">🇺🇸</span>
     </footer>
 
     <script>

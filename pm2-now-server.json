@@ -12,7 +12,10 @@
             "name": "pp-assets",
             "cwd": "./packages/assets",
             "script": "npm",
-            "args": "start"
+            "args": "start",
+            "env": {
+                "PORT": 3002
+            }
         },
         {
             "name": "pp-web",
@@ -26,11 +29,11 @@
     ],
     "rules": [
         {
-            "pathname": "/",
-            "dest": "http://localhost:3001"
+            "pathname": "/assets/*",
+            "dest": "http://localhost:3002"
         },
         {
-            "dest": "http://localhost:5000"
+            "dest": "http://localhost:3001"
         }
     ]
 }
