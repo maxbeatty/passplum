@@ -8,6 +8,6 @@
         "deploy": "pushd src/ && now --static --public --name passplum-assets && popd"
     },
     "devDependencies": {
-        "serve": "^6.3.1"
+        "serve": "^6.4.1"
     }
 }
