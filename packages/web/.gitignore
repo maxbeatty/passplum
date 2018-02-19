@@ -1,2 +1,5 @@
 seed-data.json
 .env
+
+dist/
+dist.zip

@@ -1,6 +1,5 @@
 // @flow
 
-const { parse } = require("url");
 const Rollbar = require("rollbar");
 const { fetch, getPermutations } = require("./vault");
 
@@ -14,11 +13,14 @@ const rollbar = new Rollbar({
 const MAX_TRIES = 10;
 const MAX_LEN = 7;
 
-module.exports = async (req /*: http$IncomingMessage */) => {
-  const { query } = parse(req.url, true);
-
+async function handler(
+  event /*: { queryStringParameters: { w?: number, sep?: string } } */,
+  context /*: $FlowFixMe */,
+  callback /*: (Error|null, { statusCode: number }) => void */
+) {
   let LENGTH /*: number */ = 4;
   let SEPARATOR = "-";
+  const query = event.queryStringParameters;
 
   if (query) {
     if (query.w) {
@@ -37,7 +39,12 @@ module.exports = async (req /*: http$IncomingMessage */) => {
   const passphrase = await fetch(MAX_TRIES, LENGTH, SEPARATOR, SCORE_THRESHOLD);
   const permutations = getPermutations(LENGTH);
 
-  return `
+  callback(null, {
+    statusCode: 200,
+    headers: {
+      "Content-Type": "text/html"
+    },
+    body: `
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -47,13 +54,13 @@ module.exports = async (req /*: http$IncomingMessage */) => {
 
     <title>Pass Plum</title>
 
-    <link rel="icon" href="/assets/favicon.ico">
-    <link rel="apple-touch-icon" sizes="76x76" href="/assets/touch-icon-ipad.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="/assets/touch-icon-iphone-retina.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/assets/touch-icon-ipad-retina.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/assets/touch-icon-iphone-retina-hd.png">
+    <link rel="icon" href="https://assets.passplum.com/favicon.ico">
+    <link rel="apple-touch-icon" sizes="76x76" href="https://assets.passplum.com/touch-icon-ipad.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="https://assets.passplum.com/touch-icon-iphone-retina.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="https://assets.passplum.com/touch-icon-ipad-retina.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://assets.passplum.com/touch-icon-iphone-retina-hd.png">
 
-    <link rel="stylesheet" href="/assets/main.css">
+    <link rel="stylesheet" href="https://assets.passplum.com/main.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
 
@@ -103,7 +110,9 @@ module.exports = async (req /*: http$IncomingMessage */) => {
             They are not stored. You are safe to take as many as you please.
             </p>
 
-            <h3 class="u-center i">There are over <strong class="highlight">${permutations}</strong> permutations to give out</h3>
+            <h3 class="u-center i">There are over <strong class="highlight">${
+              permutations
+            }</strong> permutations to give out</h3>
 
             <p>
             You can customize passphrases to use more words and different separators.
@@ -187,5 +196,8 @@ module.exports = async (req /*: http$IncomingMessage */) => {
     </script>
   </body>
 </html>
-`;
-};
+`
+  });
+}
+
+exports.handler = handler;

@@ -8,7 +8,7 @@
 
 Pass Plum generates strong passphrases using random sets of words from a dictionary and verifying strength with [Dropbox's password strength estimator](https://github.com/dropbox/zxcvbn). When a passphrase scores high enough, a [cryptographic key](https://en.wikipedia.org/wiki/PBKDF2) of the passphrase is generated and stored so the same permutation of words won't be shown again. When the score isn't high enough or the passphrase has already been used, another one is generated and the process starts again.
 
-Pass Plum is designed so you can run your own instance with a custom dictionary of words. Simply create `packages/web/seed-data.json` with the words you want to use like:
+Pass Plum is designed so you can run your own instance with a custom dictionary of words. Simply create `packages/web/src/seed-data.json` with the words you want to use like:
 
 ```json
 [
@@ -26,10 +26,8 @@ Pass Plum is designed so you can run your own instance with a custom dictionary 
 
 For out-of-the-box in-memory usage, all you need is [Node.js](https://nodejs.org/en/).
 
-1. Install global modules [`lerna`](https://www.npmjs.com/package/lerna), [`pm2`](https://www.npmjs.com/package/pm2), and [`now-server`](https://www.npmjs.com/package/now-server) (`npm i -g lerna pm2 now-server`)
+1. Install global module [`lerna`](https://www.npmjs.com/package/lerna) (`npm i -g lerna`)
 2. Install modules for all `packages/` (`lerna bootstrap`)
-3. Start the development servers (`pm2 start pm2-now-server.json`)
-4. Open [http://localhost:3000](http://localhost:3000)
 
 ### Environment Variables
 
@@ -40,7 +38,7 @@ By default, no environment variables are necessary. You can customize the behavi
 - `AWS_DEFAULT_REGION`: where your DynamoDB tables are (e.g. `us-west-1`). If defined, passphrases and statistics will attempt to be persisted. You will also need AWS credentials defined as environment variables either through `AWS_PROFILE` or `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`
 - `NODE_ENV`: node environment used to customize DynamoDB table names (defaults to `development`)
 - `KEEN_PROJECT_ID` && `KEEN_WRITE_KEY`: used to record anonymous passphrase analysis from [`zxcvbn`](https://github.com/dropbox/zxcvbn)
-- `ROLLBAR_ACCESS_TOKEN`: enables reporting errors to Rollbar.com 
+- `ROLLBAR_ACCESS_TOKEN`: enables reporting errors to Rollbar.com
 
 ## Scripts
 
