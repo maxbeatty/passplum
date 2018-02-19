@@ -1,13 +1,8 @@
 {
-    "name": "@passplum/assets",
-    "version": "2.0.0",
-    "description": "static assets for web",
-    "scripts": {
-        "start": "pushd src/ && serve -p ${PORT:5000}",
-        "test": "echo 'No tests for static assets' && exit 0",
-        "deploy": "pushd src/ && now --static --public --name passplum-assets && popd"
-    },
-    "devDependencies": {
-        "serve": "^6.4.1"
-    }
+  "name": "@passplum/assets",
+  "version": "2.0.0",
+  "description": "static assets for web",
+  "scripts": {
+    "deploy": "aws --profile passplum s3 sync src/ s3://assets.passplum.com --acl public-read"
+  }
 }
