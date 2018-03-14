@@ -9,11 +9,11 @@
   "author": "Max Beatty",
   "license": "MIT",
   "dependencies": {
-    "request": "^2.83.0"
+    "request": "^2.85.0"
   },
   "devDependencies": {
     "ava": "^0.23.0",
-    "nyc": "^11.3.0",
+    "nyc": "^11.6.0",
     "xo": "^0.18.2"
   }
 }

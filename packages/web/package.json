@@ -26,16 +26,16 @@
     "babel-core": "^6.26.0",
     "babel-eslint": "^7.2.3",
     "babel-preset-env": "^1.6.1",
-    "eslint-config-prettier": "^2.8.0",
-    "eslint-plugin-flowtype": "^2.39.1",
-    "eslint-plugin-prettier": "^2.3.1",
-    "flow-bin": "^0.57.3",
-    "nyc": "^11.3.0",
-    "prettier": "^1.8.2",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-flowtype": "^2.46.1",
+    "eslint-plugin-prettier": "^2.6.0",
+    "flow-bin": "^0.67.1",
+    "nyc": "^11.6.0",
+    "prettier": "^1.11.1",
     "xo": "^0.18.2"
   },
   "dependencies": {
-    "aws-sdk": "^2.197.0",
+    "aws-sdk": "^2.209.0",
     "keen-tracking": "^1.4.0",
     "rollbar": "^2.3.9",
     "zxcvbn": "^4.4.2"

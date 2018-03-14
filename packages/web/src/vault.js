@@ -12,6 +12,7 @@ const { hasBeenUsed, saveAnalysis, countWordUse } = require("./db");
 let data;
 
 try {
+  // $FlowFixMe
   data = require("./seed-data.json"); // eslint-disable-line import/no-unresolved
 } catch (err) {
   if (err.message === "Cannot find module './seed-data.json'") {
