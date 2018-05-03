@@ -1,10 +1,10 @@
 const {get, post} = require('request');
 
 const {
-  TWITTER_CONSUMER_KEY,
-  TWITTER_CONSUMER_SECRET,
-  TWITTER_ACCESS_TOKEN,
-  TWITTER_ACCESS_SECRET
+	TWITTER_CONSUMER_KEY,
+	TWITTER_CONSUMER_SECRET,
+	TWITTER_ACCESS_TOKEN,
+	TWITTER_ACCESS_SECRET
 } = process.env;
 
 const RE = /<code\s.+?>(.+?)<\/code>/g;
@@ -36,15 +36,15 @@ module.exports.tweeter = (event, context, callback) => {
 						status: 'Here is a great password: ' + matches[1]
 					}
 				},
-        err => {
-	if (err) {
-		console.log(err);
-		callback(err);
-	} else {
-		callback();
-	}
-}
-      );
+				err => {
+					if (err) {
+						console.log(err);
+						callback(err);
+					} else {
+						callback();
+					}
+				}
+			);
 		} else {
 			callback(new Error('could not find passphrase'));
 		}

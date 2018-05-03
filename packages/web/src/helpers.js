@@ -11,9 +11,11 @@ if (CRYPTO_SALT) {
   console.warn(
     "Missing CRYPTO_SALT environment variable. Setting temporary one."
   );
-  secureRandomNumber(50, 100).then(num => {
+
+  (async () => {
+    const num = await secureRandomNumber(50, 100);
     salt = Crypto.randomBytes(num).toString("hex");
-  });
+  })();
 }
 
 exports.getRandomIntSet = async function(
@@ -42,7 +44,7 @@ exports.getRandomIntSet = async function(
     );
   }
 
-  return Array.from(s);
+  return [...s];
 };
 
 exports.generateSaltedHash = function(
