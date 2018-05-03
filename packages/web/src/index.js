@@ -31,7 +31,7 @@ async function handler(
     }
 
     if (query.sep) {
-      SEPARATOR = query.sep[0]; // Single character separator
+      [SEPARATOR] = query.sep; // Single character separator
     }
   }
 
@@ -110,9 +110,7 @@ async function handler(
             They are not stored. You are safe to take as many as you please.
             </p>
 
-            <h3 class="u-center i">There are over <strong class="highlight">${
-              permutations
-            }</strong> permutations to give out</h3>
+            <h3 class="u-center i">There are over <strong class="highlight">${permutations}</strong> permutations to give out</h3>
 
             <p>
             You can customize passphrases to use more words and different separators.
