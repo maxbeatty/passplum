@@ -14,13 +14,13 @@ let data;
 try {
   // $FlowFixMe
   data = require("./seed-data.json"); // eslint-disable-line import/no-unresolved
-} catch (err) {
-  if (err.message === "Cannot find module './seed-data.json'") {
+} catch (error) {
+  if (error.message === "Cannot find module './seed-data.json'") {
     console.warn("`seed-data.json` missing from root directory!");
     console.log("Loading `example-seed-data.json` instead...");
     data = require("./example-seed-data.json");
   } else {
-    throw err;
+    throw error;
   }
 }
 
@@ -64,8 +64,8 @@ async function fetch(
     await countWordUse(words);
 
     return phrase;
-  } catch (err) {
-    console.error(err);
+  } catch (error) {
+    console.error(error);
     return fetch(--maxTries, howLong, sep, scoreThreshold);
   }
 }

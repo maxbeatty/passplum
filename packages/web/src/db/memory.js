@@ -3,7 +3,7 @@
 const used = {};
 
 module.exports = {
-  async hasBeenUsed(hash /*: string */) /*: Promise<void> */ {
+  hasBeenUsed(hash /*: string */) /*: Promise<void> */ {
     if (used[hash]) {
       throw new Error("Passphrase has been used before");
     }
@@ -12,7 +12,7 @@ module.exports = {
 
     return Promise.resolve();
   },
-  async saveAnalysis(analysis /*: $FlowFixMe */) /*: Promise<void> */ {
+  saveAnalysis(analysis /*: $FlowFixMe */) /*: Promise<void> */ {
     console.log("pretend we are saving analysis", {
       guesses: analysis.guesses,
       calc_time: analysis.calc_time, // eslint-disable-line camelcase
@@ -22,7 +22,7 @@ module.exports = {
     });
     return Promise.resolve();
   },
-  async countWordUse(words /*: Array<string> */) /*: Promise<Array<any>> */ {
+  countWordUse(words /*: Array<string> */) /*: Promise<Array<any>> */ {
     if (process.env.DEBUG) {
       console.log("pretend we are counting", words);
     }

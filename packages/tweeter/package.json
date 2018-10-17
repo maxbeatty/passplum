@@ -4,16 +4,17 @@
   "description": "tweet passphrases from passplum.com",
   "scripts": {
     "lint": "xo",
+    "pretest": "npm run lint",
     "test": "NODE_ENV=test nyc ava"
   },
   "author": "Max Beatty",
   "license": "MIT",
   "dependencies": {
-    "request": "^2.85.0"
+    "request": "^2.88.0"
   },
   "devDependencies": {
     "ava": "^0.25.0",
-    "nyc": "^11.7.1",
+    "nyc": "^13.1.0",
     "xo": "^0.20.3"
   }
 }

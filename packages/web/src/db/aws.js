@@ -71,7 +71,7 @@ module.exports = {
       );
     });
   },
-  async saveAnalysis(analysis /*: $FlowFixMe */) /*: Promise<void> */ {
+  saveAnalysis(analysis /*: $FlowFixMe */) /*: Promise<void> */ {
     return new Promise((resolve, reject) => {
       const evt = {
         guesses: analysis.guesses.toString(),
@@ -98,7 +98,7 @@ module.exports = {
       });
     });
   },
-  async countWordUse(words /*: Array<string> */) /*: Promise<Array<any>> */ {
+  countWordUse(words /*: Array<string> */) /*: Promise<Array<any>> */ {
     return Promise.all(
       words.map(
         w =>

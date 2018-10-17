@@ -13,8 +13,8 @@
   "license": "MIT",
   "dependencies": {},
   "devDependencies": {
-    "lerna": "^3.0.0",
-    "snyk": "^1.78.0"
+    "lerna": "^3.4.3",
+    "snyk": "^1.104.1"
   },
   "private": true,
   "snyk": true
