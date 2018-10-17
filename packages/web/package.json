@@ -24,20 +24,20 @@
     "ava": "^0.25.0",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
-    "babel-eslint": "^7.2.3",
-    "babel-preset-env": "^1.6.1",
-    "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-flowtype": "^2.46.3",
-    "eslint-plugin-prettier": "^2.6.0",
-    "flow-bin": "^0.71.0",
-    "nyc": "^11.7.1",
-    "prettier": "^1.12.1",
-    "xo": "^0.20.3"
+    "babel-eslint": "^10.0.1",
+    "babel-preset-env": "^1.7.0",
+    "eslint-config-prettier": "^3.1.0",
+    "eslint-plugin-flowtype": "^3.0.0",
+    "eslint-plugin-prettier": "^3.0.0",
+    "flow-bin": "^0.83.0",
+    "nyc": "^13.1.0",
+    "prettier": "^1.14.3",
+    "xo": "^0.23.0"
   },
   "dependencies": {
-    "aws-sdk": "^2.231.1",
+    "aws-sdk": "^2.337.0",
     "keen-tracking": "^1.4.1",
-    "rollbar": "^2.3.9",
+    "rollbar": "^2.4.7",
     "zxcvbn": "^4.4.2"
   },
   "xo": {
@@ -76,13 +76,13 @@
         "env",
         {
           "targets": {
-            "node": "6.10"
+            "node": "8"
           }
         }
       ]
     ]
   },
   "engines": {
-    "node": ">=8.9.4"
+    "node": ">=8"
   }
 }
