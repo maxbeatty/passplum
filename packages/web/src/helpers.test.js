@@ -8,12 +8,14 @@ const {
 } = require("./helpers");
 
 test("getRandomIntSet", async t => {
-  t.plan(5);
+  t.plan(4);
 
   // Can't get 6 numbers from a range of 2, 3, 4
-  const thrownError = await t.throws(getRandomIntSet(2, 4, 6), Error);
-
-  t.regex(thrownError.message, /^Range \(2 - 4\)/);
+  await t.throwsAsync(
+    () => getRandomIntSet(2, 4, 6),
+    Error,
+    /^Range \(2 - 4\)/
+  );
 
   const min = 2;
   const max = 20;

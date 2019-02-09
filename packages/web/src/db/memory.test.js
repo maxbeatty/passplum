@@ -7,7 +7,9 @@ test("hasBeenUsed", async t => {
 
   const hash = "my-test-hash";
 
-  await t.notThrows(hasBeenUsed(hash));
+  await t.notThrows(() => {
+    hasBeenUsed(hash);
+  });
 
   const err = t.throws(() => {
     hasBeenUsed(hash);
@@ -17,7 +19,9 @@ test("hasBeenUsed", async t => {
 });
 
 test("saveAnalysis", async t => {
-  await t.notThrows(saveAnalysis({ test: true }));
+  await t.notThrows(() => {
+    saveAnalysis({ test: true });
+  });
 });
 
 test("countWordUse", async t => {
@@ -25,10 +29,14 @@ test("countWordUse", async t => {
 
   const d = process.env.DEBUG;
   process.env.DEBUG = true;
-  await t.notThrows(countWordUse(["words", "test"]));
+  await t.notThrows(() => {
+    countWordUse(["words", "test"]);
+  });
 
   delete process.env.DEBUG;
-  await t.notThrows(countWordUse(["words", "test"]));
+  await t.notThrows(() => {
+    countWordUse(["words", "test"]);
+  });
 
   process.env.DEBUG = d;
 });

@@ -26,6 +26,7 @@ module.exports = {
     if (process.env.DEBUG) {
       console.log("pretend we are counting", words);
     }
+
     return Promise.all([Promise.resolve()]);
   }
 };

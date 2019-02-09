@@ -2,6 +2,7 @@
   "name": "@passplum/assets",
   "version": "2.0.0",
   "description": "static assets for web",
+  "private": true,
   "scripts": {
     "deploy": "aws --profile passplum s3 sync src/ s3://assets.passplum.com --acl public-read"
   }

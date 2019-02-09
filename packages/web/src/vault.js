@@ -13,7 +13,7 @@ let data;
 
 try {
   // $FlowFixMe
-  data = require("./seed-data.json"); // eslint-disable-line import/no-unresolved
+  data = require("./seed-data.json");
 } catch (error) {
   if (error.message === "Cannot find module './seed-data.json'") {
     console.warn("`seed-data.json` missing from root directory!");
@@ -40,6 +40,7 @@ async function fetch(
   if (maxTries === 0) {
     throw new Error("Unable to generate strong passphrase");
   }
+
   try {
     const rndIntSet = await getRandomIntSet(min, max, howLong);
     const words = rndIntSet.map(i => data[i]);

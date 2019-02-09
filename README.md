@@ -11,15 +11,7 @@ Pass Plum generates strong passphrases using random sets of words from a diction
 Pass Plum is designed so you can run your own instance with a custom dictionary of words. Simply create `packages/web/src/seed-data.json` with the words you want to use like:
 
 ```json
-[
-    "red",
-    "orange",
-    "yellow",
-    "green",
-    "blue",
-    "indigo",
-    "violet"
-]
+["red", "orange", "yellow", "green", "blue", "indigo", "violet"]
 ```
 
 ## Getting Started
@@ -42,5 +34,4 @@ By default, no environment variables are necessary. You can customize the behavi
 
 ## Scripts
 
-- Lint everything: `lerna run lint`
 - Test everything: `lerna run test`

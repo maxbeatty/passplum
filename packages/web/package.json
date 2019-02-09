@@ -2,6 +2,7 @@
   "name": "@passplum/web",
   "version": "2.0.0",
   "description": "web site",
+  "private": true,
   "main": "src/index.js",
   "scripts": {
     "dist": "npm run clean && npm run build && npm run dependencies && npm run compress",
@@ -21,23 +22,23 @@
   "author": "Max Beatty",
   "license": "MIT",
   "devDependencies": {
-    "ava": "^0.25.0",
+    "ava": "^1.2.1",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.3",
     "babel-eslint": "^10.0.1",
     "babel-preset-env": "^1.7.0",
-    "eslint-config-prettier": "^3.1.0",
-    "eslint-plugin-flowtype": "^3.0.0",
-    "eslint-plugin-prettier": "^3.0.0",
-    "flow-bin": "^0.83.0",
-    "nyc": "^13.1.0",
-    "prettier": "^1.14.3",
-    "xo": "^0.23.0"
+    "eslint-config-prettier": "^4.0.0",
+    "eslint-plugin-flowtype": "^3.2.1",
+    "eslint-plugin-prettier": "^3.0.1",
+    "flow-bin": "^0.92.1",
+    "nyc": "^13.2.0",
+    "prettier": "^1.16.4",
+    "xo": "^0.24.0"
   },
   "dependencies": {
-    "aws-sdk": "^2.337.0",
+    "aws-sdk": "^2.400.0",
     "keen-tracking": "^1.4.1",
-    "rollbar": "^2.4.7",
+    "rollbar": "^2.5.2",
     "zxcvbn": "^4.4.2"
   },
   "xo": {
