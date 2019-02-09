@@ -36,6 +36,7 @@
   },
   "dependencies": {
     "aws-sdk": "^2.400.0",
+    "babel-eslint": "^10.0.1",
     "keen-tracking": "^1.4.1",
     "rollbar": "^2.5.2",
     "zxcvbn": "^4.4.2"
