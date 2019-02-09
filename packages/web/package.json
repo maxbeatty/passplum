@@ -7,7 +7,7 @@
   "scripts": {
     "dist": "npm run clean && npm run build && npm run dependencies && npm run compress",
     "clean": "rm -r dist && rm dist.zip",
-    "build": "babel src --out-dir dist",
+    "build": "babel src --out-dir dist --ignore \"src/**/*.test.js\"",
     "dependencies": "cp src/seed-data.json package.json package-lock.json dist/ && npm --only=production --prefix ./dist install ./dist",
     "compress": "pushd dist && zip -r ../dist.zip * && popd",
     "flow": "flow",
@@ -22,11 +22,10 @@
   "author": "Max Beatty",
   "license": "MIT",
   "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
     "ava": "^1.2.1",
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
-    "babel-eslint": "^10.0.1",
-    "babel-preset-env": "^1.7.0",
     "eslint-config-prettier": "^4.0.0",
     "eslint-plugin-flowtype": "^3.2.1",
     "eslint-plugin-prettier": "^3.0.1",
@@ -74,7 +73,7 @@
   "babel": {
     "presets": [
       [
-        "env",
+        "@babel/preset-env",
         {
           "targets": {
             "node": "8"
