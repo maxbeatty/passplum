@@ -13,7 +13,7 @@ let data;
 
 try {
   // $FlowFixMe
-  data = require("./seed-data.json");
+  data = require("./seed-data.json"); // eslint-disable-line import/no-unresolved
 } catch (error) {
   if (error.message === "Cannot find module './seed-data.json'") {
     console.warn("`seed-data.json` missing from root directory!");
