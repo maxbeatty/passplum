@@ -24,7 +24,7 @@ For out-of-the-box in-memory usage, all you need is [Node.js](https://nodejs.org
 By default, no environment variables are necessary. You can customize the behavior by specifying some or all of these.
 
 - `CRYPTO_SALT`: salt for cryptographic key (defaults to random bytes)
-- `PASSPLUM_REGION`: where your DynamoDB tables are (e.g. `us-west-1`). If defined, passphrases and statistics will attempt to be persisted. You will also need AWS credentials defined as environment variables either through `AWS_PROFILE` or `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`
+- `PP_AWS_REGION`: where your DynamoDB tables are (e.g. `us-west-1`). If defined, passphrases and statistics will attempt to be persisted. You will also need AWS credentials defined as environment variables either through `AWS_PROFILE` or `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`
 - `NODE_ENV`: node environment used to customize DynamoDB table names (defaults to `development`)
 - `ROLLBAR_ACCESS_TOKEN`: enables reporting errors to Rollbar.com
 

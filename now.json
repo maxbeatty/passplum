@@ -39,7 +39,7 @@
     "TWITTER_ACCESS_TOKEN": "@pp-twitter-access-token",
     "TWITTER_ACCESS_SECRET": "@pp-twitter-access-secret",
     "CRYPTO_SALT": "@pp-crypto-salt",
-    "PASSPLUM_REGION": "us-west-1",
+    "PP_AWS_REGION": "us-west-1",
     "PP_AWS_ACCESS_KEY_ID": "@pp-aws-key",
     "PP_AWS_SECRET_ACCESS_KEY": "@pp-aws-secret"
   }

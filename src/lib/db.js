@@ -5,7 +5,7 @@ const DynamoDB = require("aws-sdk/clients/dynamodb");
 // beware ZEIT reserved environment variables
 const dynamodb = new DynamoDB({
   apiVersion: "2012-08-10",
-  region: process.env.PASSPLUM_REGION,
+  region: process.env.PP_AWS_REGION,
   accessKeyId: process.env.PP_AWS_ACCESS_KEY_ID,
   secretAccessKey: process.env.PP_AWS_SECRET_ACCESS_KEY
 });
