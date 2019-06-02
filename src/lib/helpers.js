@@ -3,10 +3,9 @@
 const Crypto = require("crypto");
 const secureRandomNumber = require("./csprng");
 
-const { CRYPTO_SALT } = process.env;
 let salt = "will be filled but initial value needed for tests";
-if (CRYPTO_SALT) {
-  salt = CRYPTO_SALT;
+if (process.env.CRYPTO_SALT) {
+  salt = process.env.CRYPTO_SALT;
 } else {
   console.warn(
     "Missing CRYPTO_SALT environment variable. Setting temporary one."
@@ -34,7 +33,7 @@ exports.getRandomIntSet = async function(
   const s = new Set();
 
   while (s.size < len && tries < MAX_TRIES) {
-    s.add(await secureRandomNumber(min, max)); // eslint-disable-line no-await-in-loop
+    s.add(await secureRandomNumber(min, max));
     tries++;
   }
 

@@ -11,11 +11,10 @@ test("getRandomIntSet", async t => {
   t.plan(4);
 
   // Can't get 6 numbers from a range of 2, 3, 4
-  await t.throwsAsync(
-    () => getRandomIntSet(2, 4, 6),
-    Error,
-    /^Range \(2 - 4\)/
-  );
+  await t.throwsAsync(() => getRandomIntSet(2, 4, 6), {
+    instanceOf: Error,
+    message: /^Range \(2 - 4\)/
+  });
 
   const min = 2;
   const max = 20;

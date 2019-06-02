@@ -1,24 +1,25 @@
 // @flow
 
 const zxcvbn = require("zxcvbn");
+
 const {
   getNumberWord,
   getRandomIntSet,
   generateSaltedHash,
   permutations
 } = require("./helpers");
-const { hasBeenUsed, saveAnalysis, countWordUse } = require("./db");
+const { hasBeenUsed, countWordUse } = require("./db");
 
 let data;
 
 try {
   // $FlowFixMe
-  data = require("./seed-data.json"); // eslint-disable-line import/no-unresolved
+  data = require("../seed-data.json");
 } catch (error) {
   if (error.message === "Cannot find module './seed-data.json'") {
     console.warn("`seed-data.json` missing from root directory!");
     console.log("Loading `example-seed-data.json` instead...");
-    data = require("./example-seed-data.json");
+    data = require("../example-seed-data.json");
   } else {
     throw error;
   }
@@ -52,16 +53,13 @@ async function fetch(
 
     if (analysis.score < scoreThreshold) {
       throw new Error(
-        `Passphrase ${phrase} score did not meet threshold ${scoreThreshold}`
+        `Passphrase "${phrase}" score did not meet threshold: ${scoreThreshold}`
       );
     }
 
     // Has this phrase been used?
     const hash = await generateSaltedHash(phrase);
     await hasBeenUsed(hash);
-
-    // Record analysis and use of words
-    await saveAnalysis(analysis);
     await countWordUse(words);
 
     return phrase;

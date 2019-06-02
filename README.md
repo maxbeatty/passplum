@@ -23,13 +23,40 @@ For out-of-the-box in-memory usage, all you need is [Node.js](https://nodejs.org
 
 By default, no environment variables are necessary. You can customize the behavior by specifying some or all of these.
 
-- `DEBUG`: if truthy, will log words being used in passphrases
 - `CRYPTO_SALT`: salt for cryptographic key (defaults to random bytes)
-- `AWS_DEFAULT_REGION`: where your DynamoDB tables are (e.g. `us-west-1`). If defined, passphrases and statistics will attempt to be persisted. You will also need AWS credentials defined as environment variables either through `AWS_PROFILE` or `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`
+- `PASSPLUM_REGION`: where your DynamoDB tables are (e.g. `us-west-1`). If defined, passphrases and statistics will attempt to be persisted. You will also need AWS credentials defined as environment variables either through `AWS_PROFILE` or `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`
 - `NODE_ENV`: node environment used to customize DynamoDB table names (defaults to `development`)
-- `KEEN_PROJECT_ID` && `KEEN_WRITE_KEY`: used to record anonymous passphrase analysis from [`zxcvbn`](https://github.com/dropbox/zxcvbn)
 - `ROLLBAR_ACCESS_TOKEN`: enables reporting errors to Rollbar.com
 
 ## Scripts
 
 - Test everything: `lerna run test`
+
+# Web
+
+This is the only page of the site. It's really simple and lightweight.
+
+## Usage
+
+### Query Parameters
+
+#### `w`
+
+Specify how many words to use in the passphrase (e.g. `/?w=6`). Defaults to `4`.
+
+#### `sep`
+
+Specify the separator between words (e.g. `/?sep=_`). Defaults to `-`.
+
+## Deploy
+
+1. `npm run dist`
+2. Upload `dist.zip` to AWS Lambda
+
+## Develop
+
+1. Install dependencies (`npm install`)
+2. Type check + lint + test (`npm test`)
+
+_defaults are provided for all environment variables so it'll run without any
+cloud services_
