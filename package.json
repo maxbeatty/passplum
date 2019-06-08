@@ -1,16 +1,36 @@
 {
   "name": "passplum",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Easier, Better Passwords",
+  "private": true,
   "repository": {
     "type": "git",
     "url": "git://github.com/maxbeatty/passplum.git"
   },
   "author": "Max Beatty",
   "license": "MIT",
-  "dependencies": {},
-  "devDependencies": {
-    "lerna": "^3.11.0"
+  "scripts": {
+    "test": "flow && NODE_ENV=test nyc ava"
   },
-  "private": true
+  "dependencies": {
+    "aws-sdk": "^2.466.0",
+    "micro": "^9.3.5-canary.1",
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.7",
+    "rollbar": "^2.7.1",
+    "zxcvbn": "^4.4.2"
+  },
+  "devDependencies": {
+    "ava": "^2.0.0",
+    "flow-bin": "^0.100.0",
+    "husky": "^2.4.0",
+    "nyc": "^14.1.1",
+    "prettier": "^1.18.2",
+    "pretty-quick": "^1.11.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  }
 }

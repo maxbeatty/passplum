@@ -1,18 +1,13 @@
 language: node_js
+
 node_js:
-  - "8"
-  - "10"
+  - "lts/*"
 
-install:
-  - npm i -g lerna greenkeeper-lockfile@1
-  - lerna bootstrap
+cache: npm
 
-before_script: greenkeeper-lockfile-update
-
-script:
-  - lerna run test
-
-after_script: greenkeeper-lockfile-upload
+# default behavior:
+# 1. npm install
+# 2. npm test
 
 notifications:
   email: false

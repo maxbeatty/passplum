@@ -1,0 +1,47 @@
+{
+  "version": 2,
+  "name": "passplum",
+  "alias": "passplum.com",
+  "regions": ["all"],
+  "builds": [
+    {
+      "src": "src/static/*",
+      "use": "@now/static"
+    },
+    {
+      "src": "src/routes/*.js",
+      "use": "@now/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/",
+      "methods": ["GET"],
+      "dest": "src/routes/index.js"
+    },
+    {
+      "src": "/tweeter",
+      "methods": ["POST"],
+      "dest": "src/routes/tweeter.js"
+    },
+    {
+      "src": "/static/(.*)",
+      "methods": ["GET"],
+      "dest": "src/static/$1"
+    }
+  ],
+  "env": {
+    "NODE_ENV": "production",
+    "ROLLBAR_ACCESS_TOKEN": "@pp-rollbar-access-token",
+    "PASSPLUM_TWEETER_SECRET": "@pp-tweeter-secret",
+    "PASSPLUM_VOCAB_ID": "@pp-vocab-id",
+    "TWITTER_CONSUMER_KEY": "@pp-twitter-consumer-key",
+    "TWITTER_CONSUMER_SECRET": "@pp-twitter-consumer-secret",
+    "TWITTER_ACCESS_TOKEN": "@pp-twitter-access-token",
+    "TWITTER_ACCESS_SECRET": "@pp-twitter-access-secret",
+    "CRYPTO_SALT": "@pp-crypto-salt",
+    "PP_AWS_REGION": "us-west-1",
+    "PP_AWS_ACCESS_KEY_ID": "@pp-aws-key",
+    "PP_AWS_SECRET_ACCESS_KEY": "@pp-aws-secret"
+  }
+}
