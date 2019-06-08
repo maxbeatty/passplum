@@ -11,10 +11,42 @@ const dynamodb = new DynamoDB({
 });
 
 const env = process.env.NODE_ENV || "development";
+const vocabTableName = `passplum_vocab_${env}`;
 const usedHashesTableName = `passplum_used_hashes_${env}`;
 const wordsTableName = `passplum_words_${env}`;
 
 module.exports = {
+  async loadVocab() /*: Promise<Array<string>> */ {
+    const vocab_id = process.env.PASSPLUM_VOCAB_ID || "";
+    const data = await dynamodb
+      .getItem({
+        TableName: vocabTableName,
+        Key: {
+          vocab_id: { S: vocab_id }
+        }
+      })
+      .promise();
+
+    if (!data.Item) {
+      const err = new Error("Item not found: vocab_id");
+      err.name = vocab_id;
+      throw err;
+    }
+
+    /*
+    {
+      words: {
+        L: [
+          { S: "aliceblue" },
+          { S: "aqua" },
+          ...
+        ]
+      }
+    } => ["aliceblue", "aqua"]
+    */
+    return data.Item.words.L.map(w => w.S);
+  },
+
   async hasBeenUsed(hash /*: string */) /*: Promise<void> */ {
     const data = await dynamodb
       .getItem({

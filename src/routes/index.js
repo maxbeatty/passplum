@@ -5,10 +5,12 @@ const { parse } = require("url");
 const micro = require("micro");
 
 const { captureError } = require("../lib/errors");
-const { fetch, getPermutations } = require("../lib/vault");
+const { Vault } = require("../lib/vault");
 
 const MAX_TRIES = 10;
 const MAX_LEN = 7;
+
+const v = new Vault();
 
 module.exports = micro(async req => {
   // TODO: ratelimit
@@ -34,13 +36,14 @@ module.exports = micro(async req => {
 
     const SCORE_THRESHOLD = 4; // Zxcvbn maximum
 
-    const passphrase = await fetch(
+    await v.load();
+    const passphrase = await v.fetch(
       MAX_TRIES,
       LENGTH,
       SEPARATOR,
       SCORE_THRESHOLD
     );
-    const permutations = getPermutations(LENGTH);
+    const permutations = v.getPermutations(LENGTH);
 
     return `
 <!DOCTYPE html>

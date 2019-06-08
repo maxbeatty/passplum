@@ -34,6 +34,7 @@
     "NODE_ENV": "production",
     "ROLLBAR_ACCESS_TOKEN": "@pp-rollbar-access-token",
     "PASSPLUM_TWEETER_SECRET": "@pp-tweeter-secret",
+    "PASSPLUM_VOCAB_ID": "@pp-vocab-id",
     "TWITTER_CONSUMER_KEY": "@pp-twitter-consumer-key",
     "TWITTER_CONSUMER_SECRET": "@pp-twitter-consumer-secret",
     "TWITTER_ACCESS_TOKEN": "@pp-twitter-access-token",

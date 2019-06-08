@@ -16,7 +16,7 @@ module "dynamodb_tables" {
   source = "../_modules/dynamodb_tables"
 
   environment = "production"
-  capacity    = 10
+  capacity    = 5
 }
 
 resource "aws_iam_user" "web" {
