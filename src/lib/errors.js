@@ -7,7 +7,7 @@ const rollbar = new Rollbar({
   captureUnhandledRejections: true
 });
 
-function captureError(err /*: Error */) {
+export function captureError(err /*: Error */) {
   console.error(err);
   rollbar.error(err);
 
@@ -16,7 +16,3 @@ function captureError(err /*: Error */) {
     rollbar.wait(resolve);
   });
 }
-
-module.exports = {
-  captureError
-};

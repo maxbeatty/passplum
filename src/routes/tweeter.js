@@ -23,9 +23,7 @@ const oauth = {
 
 const RE = /<code\s.+?>(.+?)<\/code>/g;
 
-module.exports = micro(async req => {
-  // TODO: ratelimit
-
+module.exports = micro(async (req, res) => {
   if (req.headers.authorization !== secret) {
     throw micro.createError(401, STATUS_CODES[401]);
   }

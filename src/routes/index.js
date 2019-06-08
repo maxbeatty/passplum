@@ -12,9 +12,7 @@ const MAX_LEN = 7;
 
 const v = new Vault();
 
-module.exports = micro(async req => {
-  // TODO: ratelimit
-
+module.exports = micro(async (req, res) => {
   try {
     let LENGTH /*: number */ = 4;
     let SEPARATOR = "-";

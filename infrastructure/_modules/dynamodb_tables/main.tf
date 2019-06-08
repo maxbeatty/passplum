@@ -15,7 +15,7 @@ resource "aws_dynamodb_table" "words" {
     type = "S"
   }
 
-  tags {
+  tags = {
     Terraform   = true
     Environment = "${var.environment}"
   }
@@ -32,7 +32,7 @@ resource "aws_dynamodb_table" "used_hashes" {
     type = "S"
   }
 
-  tags {
+  tags = {
     Terraform   = true
     Environment = "${var.environment}"
   }
@@ -49,7 +49,7 @@ resource "aws_dynamodb_table" "vocab" {
     type = "S"
   }
 
-  tags {
+  tags = {
     Terraform   = true
     Environment = "${var.environment}"
   }
