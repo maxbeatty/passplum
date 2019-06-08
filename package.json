@@ -10,7 +10,7 @@
   "author": "Max Beatty",
   "license": "MIT",
   "scripts": {
-    "test": "prettier --check ./**/* && flow && NODE_ENV=test nyc ava"
+    "test": "flow && NODE_ENV=test nyc ava"
   },
   "dependencies": {
     "aws-sdk": "^2.466.0",
