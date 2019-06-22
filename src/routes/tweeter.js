@@ -1,8 +1,6 @@
 // @flow
 
 const assert = require("assert");
-const { STATUS_CODES } = require("http");
-const micro = require("micro");
 const { get, post } = require("request-promise-native");
 
 const { captureError } = require("../lib/errors");
@@ -23,9 +21,11 @@ const oauth = {
 
 const RE = /<code\s.+?>(.+?)<\/code>/g;
 
-module.exports = micro(async (req, res) => {
+module.exports = async (req /*: $FlowFixMe */, res /*: $FlowFixMe */) => {
   if (req.headers.authorization !== secret) {
-    throw micro.createError(401, STATUS_CODES[401]);
+    res.status(401);
+    res.send("Unauthorized");
+    return;
   }
 
   try {
@@ -47,10 +47,11 @@ module.exports = micro(async (req, res) => {
       }
     });
 
-    return { status: "success" };
+    res.json({ status: "success" });
   } catch (err) {
     await captureError(err);
 
-    throw micro.createError(500, STATUS_CODES[500], err);
+    res.status(500);
+    res.send("Internal Server Error");
   }
-});
+};

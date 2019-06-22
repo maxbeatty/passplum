@@ -1,9 +1,5 @@
 // @flow
 
-const { STATUS_CODES } = require("http");
-const { parse } = require("url");
-const micro = require("micro");
-
 const { captureError } = require("../lib/errors");
 const { Vault } = require("../lib/vault");
 
@@ -12,23 +8,21 @@ const MAX_LEN = 7;
 
 const v = new Vault();
 
-module.exports = micro(async (req, res) => {
+module.exports = async (req /*: $FlowFixMe */, res /*: $FlowFixMe */) => {
   try {
     let LENGTH /*: number */ = 4;
     let SEPARATOR = "-";
 
-    const { query } = parse(req.url);
-
-    if (query) {
-      if (query.w) {
-        LENGTH = Number(query.w);
+    if (req.query) {
+      if (req.query.w) {
+        LENGTH = Number(req.query.w);
         if (LENGTH > MAX_LEN) {
           LENGTH = MAX_LEN;
         }
       }
 
-      if (query.sep) {
-        [SEPARATOR] = query.sep; // Single character separator
+      if (req.query.sep) {
+        [SEPARATOR] = req.query.sep; // Single character separator
       }
     }
 
@@ -43,7 +37,7 @@ module.exports = micro(async (req, res) => {
     );
     const permutations = v.getPermutations(LENGTH);
 
-    return `
+    res.send(`
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -462,10 +456,11 @@ module.exports = micro(async (req, res) => {
     </script>
   </body>
 </html>
-`;
+`);
   } catch (err) {
     await captureError(err);
 
-    throw micro.createError(500, STATUS_CODES[500], err);
+    res.status(500);
+    res.send("Internal Server Error");
   }
-});
+};
