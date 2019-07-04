@@ -10,14 +10,17 @@
   "author": "Max Beatty",
   "license": "MIT",
   "scripts": {
-    "test": "flow && NODE_ENV=test nyc ava"
+    "test": "flow && NODE_ENV=test nyc ava",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "dependencies": {
     "aws-sdk": "^2.466.0",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.7",
     "rollbar": "^2.7.1",
-    "zxcvbn": "^4.4.2"
+    "zxcvbn": "^4.4.2",
+    "snyk": "^1.192.0"
   },
   "devDependencies": {
     "ava": "^2.0.0",
@@ -31,5 +34,6 @@
     "hooks": {
       "pre-commit": "pretty-quick --staged"
     }
-  }
+  },
+  "snyk": true
 }
