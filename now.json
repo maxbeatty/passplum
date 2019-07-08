@@ -20,6 +20,11 @@
       "dest": "src/routes/index.js"
     },
     {
+      "src": "/privacy",
+      "methods": ["GET"],
+      "dest": "src/routes/privacy.js"
+    },
+    {
       "src": "/slacker",
       "methods": ["POST"],
       "dest": "src/routes/slacker.js"

@@ -430,9 +430,9 @@ module.exports = async (req /*: $FlowFixMe */, res /*: $FlowFixMe */) => {
     <footer class="db u-center sans-serif">
       Created by <a href="https://maxbeatty.com">Max Beatty</a>
       <br />
-      <span role="img" aria-label="flag of United States" style="line-height: 3"
-        >🇺🇸</span
-      >
+      <span role="img" aria-label="flag of United States" style="line-height: 3">🇺🇸</span>
+      <br />
+      <small><a href="/privacy">Privacy</a></small>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"
