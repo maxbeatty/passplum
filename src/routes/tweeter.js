@@ -1,16 +1,13 @@
 // @flow
 
-const assert = require("assert");
-const { get, post } = require("request-promise-native");
+const { post } = require("request-promise-native");
 
 const { captureError } = require("../lib/errors");
 const { Vault } = require("../lib/vault");
 
-assert(
-  process.env.PASSPLUM_TWEETER_SECRET,
-  "PASSPLUM_TWEETER_SECRET env var missing"
-);
-// $FlowFixMe - asserted existence ^^
+if (!process.env.PASSPLUM_TWEETER_SECRET) {
+  throw new Error("PASSPLUM_TWEETER_SECRET env var missing");
+}
 const secret = `Bearer ${process.env.PASSPLUM_TWEETER_SECRET}`;
 
 const oauth = {
@@ -43,7 +40,7 @@ module.exports = async (req /*: $FlowFixMe */, res /*: $FlowFixMe */) => {
 
     res.json({ status: "success" });
   } catch (err) {
-    await captureError(err);
+    await captureError(err, req);
 
     res.status(500);
     res.send("Internal Server Error");

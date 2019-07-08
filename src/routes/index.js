@@ -450,7 +450,7 @@ module.exports = async (req /*: $FlowFixMe */, res /*: $FlowFixMe */) => {
 </html>
 `);
   } catch (err) {
-    await captureError(err);
+    await captureError(err, req);
 
     res.status(500);
     res.send("Internal Server Error");
