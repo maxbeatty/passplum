@@ -37,13 +37,13 @@ function verifyRequest(reqHeaders, reqBody) {
 
 module.exports = async (req /*: $FlowFixMe */, res /*: $FlowFixMe */) => {
   try {
-    verifyRequest(req.headers, req.body);
-
     // Slack verifying SSL ==> respond 200
     if (req.body.ssl_check === 1) {
       res.send("OK");
       return;
     }
+
+    verifyRequest(req.headers, req.body);
 
     if (req.body.command !== "/passplum") {
       throw new Error("Unknown Slack slash command:" + req.body.command);
