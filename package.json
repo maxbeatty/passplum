@@ -3,6 +3,9 @@
   "version": "2.1.0",
   "description": "Easier, Better Passwords",
   "private": true,
+  "engines": {
+    "node": "10.x"
+  },
   "repository": {
     "type": "git",
     "url": "git://github.com/maxbeatty/passplum.git"
@@ -17,6 +20,7 @@
     "request": "^2.88.0",
     "request-promise-native": "^1.0.7",
     "rollbar": "^2.8.1",
+    "tsscmp": "^1.0.6",
     "zxcvbn": "^4.4.2"
   },
   "devDependencies": {
