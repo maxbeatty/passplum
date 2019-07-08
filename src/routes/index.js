@@ -3,7 +3,6 @@
 const { captureError } = require("../lib/errors");
 const { Vault } = require("../lib/vault");
 
-const MAX_TRIES = 10;
 const MAX_LEN = 7;
 
 const v = new Vault();
@@ -26,15 +25,8 @@ module.exports = async (req /*: $FlowFixMe */, res /*: $FlowFixMe */) => {
       }
     }
 
-    const SCORE_THRESHOLD = 4; // Zxcvbn maximum
-
     await v.load();
-    const passphrase = await v.fetch(
-      MAX_TRIES,
-      LENGTH,
-      SEPARATOR,
-      SCORE_THRESHOLD
-    );
+    const passphrase = await v.fetch(LENGTH, SEPARATOR);
     const permutations = v.getPermutations(LENGTH);
 
     res.send(`

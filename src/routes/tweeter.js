@@ -4,6 +4,7 @@ const assert = require("assert");
 const { get, post } = require("request-promise-native");
 
 const { captureError } = require("../lib/errors");
+const { Vault } = require("../lib/vault");
 
 assert(
   process.env.PASSPLUM_TWEETER_SECRET,
@@ -19,7 +20,7 @@ const oauth = {
   token_secret: process.env.TWITTER_ACCESS_SECRET
 };
 
-const RE = /<code\s.+?>(.+?)<\/code>/g;
+const v = new Vault();
 
 module.exports = async (req /*: $FlowFixMe */, res /*: $FlowFixMe */) => {
   if (req.headers.authorization !== secret) {
@@ -29,21 +30,14 @@ module.exports = async (req /*: $FlowFixMe */, res /*: $FlowFixMe */) => {
   }
 
   try {
-    const body = await get("https://passplum.com");
-    const matches = RE.exec(body);
-
-    if (!matches || matches.length < 2) {
-      const err = new Error("could not find passphrase");
-      // $FlowFixMe - I do what I want
-      err.body = body;
-      throw err;
-    }
+    await v.load();
+    const passphrase = await v.fetch();
 
     await post({
       url: "https://api.twitter.com/1.1/statuses/update.json",
       oauth,
       qs: {
-        status: "Here is a great password: " + matches[1]
+        status: "Here is a great password: " + passphrase
       }
     });
 
