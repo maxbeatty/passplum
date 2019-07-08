@@ -58,7 +58,7 @@ module.exports = async (req /*: $FlowFixMe */, res /*: $FlowFixMe */) => {
         attachments: [
           {
             text:
-              "Use `/passplum` to generate a :new:, unique, _private_ passphrase made of simple, easy-to-type words"
+              "Use `/passplum` to generate a :new: unique, _private_ passphrase made of simple, easy-to-type words"
           }
         ]
       });
