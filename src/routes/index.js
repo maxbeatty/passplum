@@ -3,7 +3,6 @@
 const { captureError } = require("../lib/errors");
 const { Vault } = require("../lib/vault");
 
-const MAX_TRIES = 10;
 const MAX_LEN = 7;
 
 const v = new Vault();
@@ -26,15 +25,8 @@ module.exports = async (req /*: $FlowFixMe */, res /*: $FlowFixMe */) => {
       }
     }
 
-    const SCORE_THRESHOLD = 4; // Zxcvbn maximum
-
     await v.load();
-    const passphrase = await v.fetch(
-      MAX_TRIES,
-      LENGTH,
-      SEPARATOR,
-      SCORE_THRESHOLD
-    );
+    const passphrase = await v.fetch(LENGTH, SEPARATOR);
     const permutations = v.getPermutations(LENGTH);
 
     res.send(`
@@ -44,6 +36,7 @@ module.exports = async (req /*: $FlowFixMe */, res /*: $FlowFixMe */) => {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Easier, Better Passwords" />
+    <meta name="slack-app-id" content="AL6GW8MNY" />
 
     <title>Pass Plum</title>
 
@@ -403,6 +396,10 @@ module.exports = async (req /*: $FlowFixMe */, res /*: $FlowFixMe */) => {
       </fieldset>
     </form>
 
+    <a class="db u-center" style="margin-top: 1rem;margin-bottom: -1rem;" href="https://slack.com/oauth/authorize?scope=commands&client_id=3648710574.686574293780">
+      <img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" />
+    </a>
+
     <article class="serif">
       <section>
         <h2>Why?</h2>
@@ -422,12 +419,8 @@ module.exports = async (req /*: $FlowFixMe */, res /*: $FlowFixMe */) => {
       <section>
         <p>
           Pass Plum is
-          <a href="https://github.com/maxbeatty/passplum">open source</a> and
-          designed so you can easily use your own collection of words.
-        </p>
-
-        <p>
-          Send your improvements, questions, and ideas to
+          <a href="https://github.com/maxbeatty/passplum">open source</a>.
+          Please send your questions and ideas to
           <a href="https://github.com/maxbeatty/passplum/issues">GitHub</a> or
           <a href="https://twitter.com/passplum">Twitter</a>.
         </p>
@@ -458,7 +451,7 @@ module.exports = async (req /*: $FlowFixMe */, res /*: $FlowFixMe */) => {
 </html>
 `);
   } catch (err) {
-    await captureError(err);
+    await captureError(err, req);
 
     res.status(500);
     res.send("Internal Server Error");

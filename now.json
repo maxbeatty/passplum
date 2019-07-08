@@ -20,6 +20,16 @@
       "dest": "src/routes/index.js"
     },
     {
+      "src": "/slacker",
+      "methods": ["POST"],
+      "dest": "src/routes/slacker.js"
+    },
+    {
+      "src": "/slack/oauth",
+      "methods": ["GET"],
+      "dest": "src/routes/slacker-oauth.js"
+    },
+    {
       "src": "/tweeter",
       "methods": ["POST"],
       "dest": "src/routes/tweeter.js"
@@ -35,6 +45,9 @@
     "ROLLBAR_ACCESS_TOKEN": "@pp-rollbar-access-token",
     "PASSPLUM_TWEETER_SECRET": "@pp-tweeter-secret",
     "PASSPLUM_VOCAB_ID": "@pp-vocab-id",
+    "SLACK_CLIENT_ID": "@pp-slack-client-id",
+    "SLACK_CLIENT_SECRET": "@pp-slack-client-secret",
+    "SLACK_SIGNING_SECRET": "@pp-slack-signing-secret",
     "TWITTER_CONSUMER_KEY": "@pp-twitter-consumer-key",
     "TWITTER_CONSUMER_SECRET": "@pp-twitter-consumer-secret",
     "TWITTER_ACCESS_TOKEN": "@pp-twitter-access-token",

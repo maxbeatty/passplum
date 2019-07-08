@@ -35,10 +35,10 @@ export class Vault {
   }
 
   async fetch(
-    maxTries /*: number */,
-    howLong /*: number */,
-    sep /*: string */,
-    scoreThreshold /*: number */
+    howLong /*: number */ = 4,
+    sep /*: string */ = "-",
+    maxTries /*: number */ = 10,
+    scoreThreshold /*: number */ = 4 // Zxcvbn maximum
   ) /*: Promise<string> */ {
     if (maxTries === 0) {
       throw new Error("Unable to generate strong passphrase");
@@ -67,7 +67,7 @@ export class Vault {
       return phrase;
     } catch (error) {
       console.error(error);
-      return this.fetch(--maxTries, howLong, sep, scoreThreshold);
+      return this.fetch(howLong, sep, --maxTries, scoreThreshold);
     }
   }
 }

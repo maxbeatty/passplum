@@ -7,9 +7,9 @@ const rollbar = new Rollbar({
   captureUnhandledRejections: true
 });
 
-export function captureError(err /*: Error */) {
+export function captureError(err /*: Error */, req /*: $FlowFixMe */) {
   console.error(err);
-  rollbar.error(err);
+  rollbar.error(err, req);
 
   // wait for serverless
   return new Promise(resolve => {
