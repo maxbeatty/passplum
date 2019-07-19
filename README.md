@@ -2,7 +2,7 @@
 
 > Easier, Better Passwords
 
-[https://passplum.com](https://passplum.com)
+[https://passplum.maxbeatty.com](https://passplum.maxbeatty.com)
 
 Pass Plum generates strong passphrases using random sets of words from a dictionary and verifying strength with [Dropbox's password strength estimator](https://github.com/dropbox/zxcvbn). When a passphrase scores high enough, a [cryptographic key](https://en.wikipedia.org/wiki/PBKDF2) of the passphrase is generated and stored so the same permutation of words won't be shown again. When the score isn't high enough or the passphrase has already been used, another one is generated and the process starts again.
 
