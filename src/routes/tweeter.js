@@ -8,7 +8,18 @@ const { Vault } = require("../lib/vault");
 if (!process.env.PASSPLUM_TWEETER_SECRET) {
   throw new Error("PASSPLUM_TWEETER_SECRET env var missing");
 }
-const secret = `Bearer ${process.env.PASSPLUM_TWEETER_SECRET}`;
+
+function basicAuth(req) /*: boolean */ {
+  try {
+    const cred = req.headers.authorization.split("Basic ")[1];
+    const pass = Buffer.from(cred, "base64")
+      .toString()
+      .split(":")[1];
+    return pass === process.env.PASSPLUM_TWEETER_SECRET;
+  } catch (ex) {
+    return false;
+  }
+}
 
 const oauth = {
   consumer_key: process.env.TWITTER_CONSUMER_KEY,
@@ -20,7 +31,7 @@ const oauth = {
 const v = new Vault();
 
 module.exports = async (req /*: $FlowFixMe */, res /*: $FlowFixMe */) => {
-  if (req.headers.authorization !== secret) {
+  if (!basicAuth(req)) {
     res.status(401);
     res.send("Unauthorized");
     return;
@@ -38,7 +49,7 @@ module.exports = async (req /*: $FlowFixMe */, res /*: $FlowFixMe */) => {
       }
     });
 
-    res.json({ status: "success" });
+    res.json({ status: "success", passphrase });
   } catch (err) {
     await captureError(err, req);
 

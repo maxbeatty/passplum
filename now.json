@@ -36,7 +36,7 @@
     },
     {
       "src": "/tweeter",
-      "methods": ["POST"],
+      "methods": ["GET"],
       "dest": "src/routes/tweeter.js"
     },
     {
