@@ -7,7 +7,7 @@ const rollbar = new Rollbar({
   captureUnhandledRejections: true
 });
 
-export function captureError(err /*: Error */, req /*: $FlowFixMe */) {
+captureError(err /*: Error */, req /*: $FlowFixMe */) {
   console.error(err);
   rollbar.error(err, req);
 
@@ -16,3 +16,5 @@ export function captureError(err /*: Error */, req /*: $FlowFixMe */) {
     rollbar.wait(resolve);
   });
 }
+
+module.exports = { captureError };
