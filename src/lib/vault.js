@@ -10,7 +10,7 @@ const {
 } = require("./helpers");
 const { loadVocab, hasBeenUsed, countWordUse } = require("./db");
 
-export class Vault {
+class Vault {
   /*::
     data: Array<string>;
     max: number;
@@ -71,3 +71,5 @@ export class Vault {
     }
   }
 }
+
+module.exports = { Vault };
