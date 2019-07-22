@@ -10,7 +10,7 @@
     },
     {
       "src": "src/routes/*.js",
-      "use": "@now/node@0.11.1"
+      "use": "@now/node@canary"
     }
   ],
   "routes": [
