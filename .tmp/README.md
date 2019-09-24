@@ -1,1 +1,0 @@
-I am transitioning passplum.com to passplum.maxbeatty.com to save ~\$15/yr which represents >50% of the operating costs for this little side project. passplum.com will expire on Sept 23, 2019 and start redirecting today (July 7, 2019).
