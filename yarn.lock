@@ -3251,10 +3251,10 @@ rimraf@^2.6.3:
   dependencies:
     glob "^7.1.3"
 
-rollbar@^2.8.1:
-  version "2.14.2"
-  resolved "https://registry.yarnpkg.com/rollbar/-/rollbar-2.14.2.tgz#f92d260f50755394b76b6778c6b0a1ae92f9c930"
-  integrity sha512-hOvv8wPw0FmtfOIm36ZU5u7dTeA52ue/cAXAd6l7tNzXg5RSA+egcnWSt7sLZJe0ylkV9oplcAfKkoXI9i90Fg==
+rollbar@^2.14.4:
+  version "2.14.4"
+  resolved "https://registry.yarnpkg.com/rollbar/-/rollbar-2.14.4.tgz#b89f6ddd57adb88ae48f6d8c46619ef44fb27888"
+  integrity sha512-96m2/pBV8UioBjmqa7/WXiPIcumuuGvmfiB9WHRdVBdHcAuBhYBivWl+NMmS/op2XZ54qAmJyd3uThW6SSKvzQ==
   dependencies:
     async "~1.2.1"
     buffer-from "~1.1.1"
