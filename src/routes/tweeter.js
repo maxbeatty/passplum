@@ -1,6 +1,6 @@
 // @flow
 
-const { post } = require("request-promise-native");
+const { get, post } = require("request-promise-native");
 
 const { captureError } = require("../lib/errors");
 const { Vault } = require("../lib/vault");
@@ -9,14 +9,25 @@ if (!process.env.PASSPLUM_TWEETER_SECRET) {
   throw new Error("PASSPLUM_TWEETER_SECRET env var missing");
 }
 
-function basicAuth(req) /*: boolean */ {
+async function auth(req) /*: Promise<boolean> */ {
   try {
-    const cred = req.headers.authorization.split("Basic ")[1];
-    const pass = Buffer.from(cred, "base64")
-      .toString()
-      .split(":")[1];
-    return pass === process.env.PASSPLUM_TWEETER_SECRET;
+    const id_token = req.headers.authorization.split("Bearer ")[1];
+
+    const jwt = await get({
+      url: "https://oauth2.googleapis.com/tokeninfo",
+      qs: {
+        id_token
+      },
+      json: true
+    });
+
+    return (
+      jwt.email === process.env.PASSPLUM_TWEETER_SECRET &&
+      jwt.email_verified === "true" &&
+      Number(jwt.exp) > Date.now() / 1000
+    );
   } catch (ex) {
+    console.error(ex);
     return false;
   }
 }
@@ -31,7 +42,8 @@ const oauth = {
 const v = new Vault();
 
 module.exports = async (req /*: $FlowFixMe */, res /*: $FlowFixMe */) => {
-  if (!basicAuth(req)) {
+  const authed = await auth(req);
+  if (!authed) {
     res.status(401);
     res.send("Unauthorized");
     return;
