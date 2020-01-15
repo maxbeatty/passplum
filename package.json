@@ -25,7 +25,7 @@
   },
   "devDependencies": {
     "ava": "^2.2.0",
-    "flow-bin": "^0.115.0",
+    "flow-bin": "^0.116.0",
     "husky": "^4.0.8",
     "nyc": "^15.0.0",
     "prettier": "^1.19.1",
