@@ -16,7 +16,7 @@
     "test": "flow && NODE_ENV=test nyc ava"
   },
   "dependencies": {
-    "aws-sdk": "^2.610.0",
+    "aws-sdk": "^2.613.0",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.7",
     "rollbar": "^2.14.4",
