@@ -4,7 +4,7 @@ const rollbar = new Rollbar({
   accessToken: process.env.ROLLBAR_ACCESS_TOKEN,
   environment: process.env.NODE_ENV,
   captureUncaught: true,
-  captureUnhandledRejections: true
+  captureUnhandledRejections: true,
 });
 
 function captureError(err /*: Error */, req /*: $FlowFixMe */) {
@@ -12,7 +12,7 @@ function captureError(err /*: Error */, req /*: $FlowFixMe */) {
   rollbar.error(err, req);
 
   // wait for serverless
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     rollbar.wait(resolve);
   });
 }

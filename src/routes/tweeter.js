@@ -16,9 +16,9 @@ async function auth(req) /*: Promise<boolean> */ {
     const jwt = await get({
       url: "https://oauth2.googleapis.com/tokeninfo",
       qs: {
-        id_token
+        id_token,
       },
-      json: true
+      json: true,
     });
 
     return (
@@ -36,7 +36,7 @@ const oauth = {
   consumer_key: process.env.TWITTER_CONSUMER_KEY,
   consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
   token: process.env.TWITTER_ACCESS_TOKEN,
-  token_secret: process.env.TWITTER_ACCESS_SECRET
+  token_secret: process.env.TWITTER_ACCESS_SECRET,
 };
 
 const v = new Vault();
@@ -57,8 +57,8 @@ module.exports = async (req /*: $FlowFixMe */, res /*: $FlowFixMe */) => {
       url: "https://api.twitter.com/1.1/statuses/update.json",
       oauth,
       qs: {
-        status: "Here is a great password: " + passphrase
-      }
+        status: "Here is a great password: " + passphrase,
+      },
     });
 
     res.json({ status: "success", passphrase });

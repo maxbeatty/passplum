@@ -58,9 +58,9 @@ module.exports = async (req /*: $FlowFixMe */, res /*: $FlowFixMe */) => {
         attachments: [
           {
             text:
-              "Use `/passplum` to generate a :new: unique, _private_ passphrase made of simple, easy-to-type words"
-          }
-        ]
+              "Use `/passplum` to generate a :new: unique, _private_ passphrase made of simple, easy-to-type words",
+          },
+        ],
       });
       return;
     }
@@ -70,14 +70,14 @@ module.exports = async (req /*: $FlowFixMe */, res /*: $FlowFixMe */) => {
 
     res.json({
       response_type: "ephemeral",
-      text: "Here's a great password: `" + passphrase + "`"
+      text: "Here's a great password: `" + passphrase + "`",
     });
   } catch (err) {
     await captureError(err, req);
 
     res.json({
       response_type: "ephemeral",
-      text: "Sorry, that didn't work. Please try again."
+      text: "Sorry, that didn't work. Please try again.",
     });
   }
 };
