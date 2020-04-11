@@ -1,5 +1,3 @@
-// @flow
-
 /*
  Adapted without dependencies from https://github.com/joepie91/node-random-number-csprng/blob/5899a8e06ffa134c307e1153f4f810af2243cff6/src/index.js
 */

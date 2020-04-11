@@ -1,5 +1,3 @@
-// @flow
-
 const DynamoDB = require("aws-sdk/clients/dynamodb");
 
 // beware ZEIT reserved environment variables

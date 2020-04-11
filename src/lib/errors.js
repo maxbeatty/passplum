@@ -7,7 +7,7 @@ const rollbar = new Rollbar({
   captureUnhandledRejections: true,
 });
 
-function captureError(err /*: Error */, req /*: $FlowFixMe */) {
+function captureError(err /*: Error */, req) {
   console.error(err);
   rollbar.error(err, req);
 

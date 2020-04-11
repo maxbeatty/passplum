@@ -1,6 +1,4 @@
-// @flow
-
-module.exports = (_req /*: $FlowFixMe */, res /*: $FlowFixMe */) => {
+module.exports = (_req, res) => {
   res.send(`
     <h1>Privacy Policy</h1>
 

@@ -1,5 +1,3 @@
-// @flow
-
 const zxcvbn = require("zxcvbn");
 
 const {
