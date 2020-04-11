@@ -1,5 +1,3 @@
-// @flow
-
 const crypto = require("crypto");
 const querystring = require("querystring");
 const timingSafeCompare = require("tsscmp");
@@ -35,7 +33,7 @@ function verifyRequest(reqHeaders, reqBody) {
   }
 }
 
-module.exports = async (req /*: $FlowFixMe */, res /*: $FlowFixMe */) => {
+module.exports = async (req, res) => {
   try {
     // Slack verifying SSL ==> respond 200
     if (req.body.ssl_check === 1) {

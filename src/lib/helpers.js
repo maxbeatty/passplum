@@ -1,5 +1,3 @@
-// @flow
-
 const Crypto = require("crypto");
 const secureRandomNumber = require("./csprng");
 

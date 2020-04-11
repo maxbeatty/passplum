@@ -1,5 +1,3 @@
-// @flow
-
 const { get, post } = require("request-promise-native");
 
 const { captureError } = require("../lib/errors");
@@ -41,7 +39,7 @@ const oauth = {
 
 const v = new Vault();
 
-module.exports = async (req /*: $FlowFixMe */, res /*: $FlowFixMe */) => {
+module.exports = async (req, res) => {
   const authed = await auth(req);
   if (!authed) {
     res.status(401);

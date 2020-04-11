@@ -1,5 +1,3 @@
-// @flow
-
 const { captureError } = require("../lib/errors");
 const { Vault } = require("../lib/vault");
 
@@ -7,7 +5,7 @@ const MAX_LEN = 7;
 
 const v = new Vault();
 
-module.exports = async (req /*: $FlowFixMe */, res /*: $FlowFixMe */) => {
+module.exports = async (req, res) => {
   try {
     let LENGTH /*: number */ = 4;
     let SEPARATOR = "-";

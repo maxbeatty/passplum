@@ -1,5 +1,3 @@
-// @flow
-
 const { post } = require("request-promise-native");
 
 const { captureError } = require("../lib/errors");
@@ -12,7 +10,7 @@ if (!clientId || !clientSecret) {
 const authorization =
   "Basic " + Buffer.from(`${clientId}:${clientSecret}`).toString("base64");
 
-module.exports = async (req /*: $FlowFixMe */, res /*: $FlowFixMe */) => {
+module.exports = async (req, res) => {
   try {
     if (req.query.error === "access_denied") {
       res.writeHead(302, "Redirect", { Location: "/" });
