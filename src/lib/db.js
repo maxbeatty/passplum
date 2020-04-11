@@ -7,7 +7,7 @@ const dynamodb = new DynamoDB({
   apiVersion: "2012-08-10",
   region: process.env.PP_AWS_REGION,
   accessKeyId: process.env.PP_AWS_ACCESS_KEY_ID,
-  secretAccessKey: process.env.PP_AWS_SECRET_ACCESS_KEY
+  secretAccessKey: process.env.PP_AWS_SECRET_ACCESS_KEY,
 });
 
 const env = process.env.NODE_ENV || "development";
@@ -22,8 +22,8 @@ module.exports = {
       .getItem({
         TableName: vocabTableName,
         Key: {
-          vocab_id: { S: vocab_id }
-        }
+          vocab_id: { S: vocab_id },
+        },
       })
       .promise();
 
@@ -44,7 +44,7 @@ module.exports = {
       }
     } => ["aliceblue", "aqua"]
     */
-    return data.Item.words.L.map(w => w.S);
+    return data.Item.words.L.map((w) => w.S);
   },
 
   async hasBeenUsed(hash /*: string */) /*: Promise<void> */ {
@@ -53,9 +53,9 @@ module.exports = {
         TableName: usedHashesTableName,
         Key: {
           phrase_hash: {
-            S: hash
-          }
-        }
+            S: hash,
+          },
+        },
       })
       .promise();
 
@@ -68,43 +68,43 @@ module.exports = {
         TableName: usedHashesTableName,
         Item: {
           phrase_hash: {
-            S: hash
+            S: hash,
           },
           created_at: {
-            N: Date.now().toString()
-          }
-        }
+            N: Date.now().toString(),
+          },
+        },
       })
       .promise();
   },
 
   countWordUse(words /*: Array<string> */) /*: Promise<Array<any>> */ {
     return Promise.all(
-      words.map(w =>
+      words.map((w) =>
         dynamodb
           .updateItem({
             TableName: wordsTableName,
             Key: {
               word: {
-                S: w
-              }
+                S: w,
+              },
             },
             ExpressionAttributeNames: {
               "#U": "used_count",
-              "#L": "last_used"
+              "#L": "last_used",
             },
             ExpressionAttributeValues: {
               ":u": {
-                N: "1"
+                N: "1",
               },
               ":l": {
-                N: Date.now().toString()
-              }
+                N: Date.now().toString(),
+              },
             },
-            UpdateExpression: "SET #L = :l ADD #U :u"
+            UpdateExpression: "SET #L = :l ADD #U :u",
           })
           .promise()
       )
     );
-  }
+  },
 };

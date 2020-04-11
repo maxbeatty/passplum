@@ -6,7 +6,7 @@ const {
   getNumberWord,
   getRandomIntSet,
   generateSaltedHash,
-  permutations
+  permutations,
 } = require("./helpers");
 const { loadVocab, hasBeenUsed, countWordUse } = require("./db");
 
@@ -46,7 +46,7 @@ class Vault {
 
     try {
       const rndIntSet = await getRandomIntSet(0, this.max, howLong);
-      const words = rndIntSet.map(i => this.data[i]);
+      const words = rndIntSet.map((i) => this.data[i]);
 
       const phrase = words.join(sep);
 

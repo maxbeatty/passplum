@@ -17,7 +17,7 @@ if (process.env.CRYPTO_SALT) {
   })();
 }
 
-exports.getRandomIntSet = async function(
+exports.getRandomIntSet = async function (
   min /*: number */,
   max /*: number */,
   len /*: number */
@@ -46,7 +46,7 @@ exports.getRandomIntSet = async function(
   return [...s];
 };
 
-exports.generateSaltedHash = function(
+exports.generateSaltedHash = function (
   str /*: string */
 ) /*: Promise<string> */ {
   return new Promise((resolve, reject) => {
@@ -60,7 +60,7 @@ exports.generateSaltedHash = function(
   });
 };
 
-exports.permutations = function(
+exports.permutations = function (
   n /* : number */,
   k /* : number */
 ) /* : number */ {
@@ -74,7 +74,7 @@ exports.permutations = function(
   return result;
 };
 
-exports.getNumberWord = function(num /*: number */) /*: string */ {
+exports.getNumberWord = function (num /*: number */) /*: string */ {
   const n = num.toString();
 
   if (num > -1000 && num < 1000) return n;

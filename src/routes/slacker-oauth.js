@@ -23,11 +23,11 @@ module.exports = async (req /*: $FlowFixMe */, res /*: $FlowFixMe */) => {
     const oauthAccess = await post({
       url: "https://slack.com/api/oauth.access",
       headers: {
-        authorization
+        authorization,
       },
       form: {
-        code: req.query.code
-      }
+        code: req.query.code,
+      },
     });
 
     const { access_token } = JSON.parse(oauthAccess);
@@ -36,9 +36,9 @@ module.exports = async (req /*: $FlowFixMe */, res /*: $FlowFixMe */) => {
       url: "https://slack.com/api/auth.test",
 
       headers: {
-        authorization: `Bearer ${access_token}`
+        authorization: `Bearer ${access_token}`,
       },
-      json: true
+      json: true,
     });
 
     res.writeHead(302, "Redirect", { Location: slackUrl });

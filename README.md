@@ -1,4 +1,4 @@
-# passplum [![Build Status](https://travis-ci.org/maxbeatty/passplum.svg)](https://travis-ci.org/maxbeatty/passplum) [![Greenkeeper badge](https://badges.greenkeeper.io/maxbeatty/passplum.svg)](https://greenkeeper.io/)
+# passplum
 
 > Easier, Better Passwords
 

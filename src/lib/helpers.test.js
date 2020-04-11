@@ -4,16 +4,16 @@ const {
   getRandomIntSet,
   generateSaltedHash,
   permutations,
-  getNumberWord
+  getNumberWord,
 } = require("./helpers");
 
-test("getRandomIntSet", async t => {
+test("getRandomIntSet", async (t) => {
   t.plan(4);
 
   // Can't get 6 numbers from a range of 2, 3, 4
   await t.throwsAsync(() => getRandomIntSet(2, 4, 6), {
     instanceOf: Error,
-    message: /^Range \(2 - 4\)/
+    message: /^Range \(2 - 4\)/,
   });
 
   const min = 2;
@@ -33,12 +33,12 @@ test("getRandomIntSet", async t => {
   // t.true(err2.message === "Could not produce random int set in 6 tries");
 });
 
-test("generateSaltedHash", async t => {
+test("generateSaltedHash", async (t) => {
   const h = await generateSaltedHash("test-test-test");
   t.true(h && h.length > 0);
 });
 
-test("permutations", t => {
+test("permutations", (t) => {
   t.plan(2);
 
   const p1 = permutations(3, 2);
@@ -48,7 +48,7 @@ test("permutations", t => {
   t.true(p2 === 378652680);
 });
 
-test("getNumberWord", t => {
+test("getNumberWord", (t) => {
   const tests = [
     [1, "1"],
     [12, "12"],
@@ -66,7 +66,7 @@ test("getNumberWord", t => {
     [12345678901234, "12 trillion"],
     [123456789012345, "123 trillion"],
     [1234567890123456, "1 quadrillion"],
-    [12345678901234567890, "999 quadrillion"]
+    [12345678901234567890, "999 quadrillion"],
   ];
 
   t.plan(tests.length);
