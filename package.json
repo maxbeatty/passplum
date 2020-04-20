@@ -16,7 +16,7 @@
     "test": "NODE_ENV=test nyc ava"
   },
   "dependencies": {
-    "aws-sdk": "^2.636.0",
+    "aws-sdk": "^2.658.0",
     "request": "^2.88.2",
     "request-promise-native": "^1.0.7",
     "rollbar": "^2.15.1",
