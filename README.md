@@ -1,4 +1,5 @@
-# passplum
+# passplum [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=maxbeatty/passplum)](https://dependabot.com)
+
 
 > Easier, Better Passwords
 
