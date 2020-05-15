@@ -2519,10 +2519,10 @@ rimraf@^3.0.0:
   dependencies:
     glob "^7.1.3"
 
-rollbar@^2.16.0:
-  version "2.16.0"
-  resolved "https://registry.yarnpkg.com/rollbar/-/rollbar-2.16.0.tgz#9b6724f63516e677e08ee57e1f7a0dd8d3f156fc"
-  integrity sha512-O/d6/gPbmVfyhazTx8TGThMACmQd6W6NnZWwNlyfu4IrxYFWgktQp+xCEBPDuJsfiecnYcZj5baW2Ei5I7/Vwg==
+rollbar@^2.16.1:
+  version "2.16.1"
+  resolved "https://registry.yarnpkg.com/rollbar/-/rollbar-2.16.1.tgz#92455945282024b7a99a5385d9832250ba791a29"
+  integrity sha512-aMa98+gfrbJ3j3Anvrthl2s3qVHTaxWqprfgZhXScOo8jaAVeBrkCWJ7GER58juBft83QMGKyyix7cVeRd0sAA==
   dependencies:
     async "~1.2.1"
     buffer-from "~1.1.1"
