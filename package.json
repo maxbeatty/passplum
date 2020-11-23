@@ -19,7 +19,7 @@
     "aws-sdk": "^2.658.0",
     "request": "^2.88.2",
     "request-promise-native": "^1.0.9",
-    "rollbar": "^2.19.0",
+    "rollbar": "^2.19.4",
     "tsscmp": "^1.0.6",
     "zxcvbn": "^4.4.2"
   },
